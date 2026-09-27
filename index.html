@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ben Rubens · Jazz Bass</title>
+<meta name="description" content="Ben Rubens, jazz bassist in New Jersey and New York City. Upright and electric bass for bands, clubs, libraries and private events.">
+<meta property="og:title" content="Ben Rubens · Jazz Bass">
+<meta property="og:image" content="ben-rubens.jpg">
+<link rel="icon" href="ben-rubens.jpg">
+
+<!--
+  ===================================================================
+  HOW TO EDIT THIS TEMPLATE
+  All of your text lives in the SITE object inside the <script> at the
+  bottom of this file. Change the values there (name, bio, links,
+  dates, formats) and the whole page updates. You do not need to touch
+  the HTML or CSS unless you want to change the design.
+  ===================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  :root{
+    --ground:#ECEEF1;
+    --panel:#E1E4E9;
+    --ink:#15171D;
+    --ink-soft:#4A4F5C;
+    --rule:#C5CAD3;
+    --brass:#9A6A1E;
+    --brass-soft:#E7D5B3;
+    --oxblood:#6C2131;
+    --on-accent:#FFFFFF;
+    --display:"Big Shoulders Display", "Arial Narrow", "Helvetica Neue Condensed", Impact, sans-serif;
+    --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ground:#111319;
+      --panel:#1A1D25;
+      --ink:#ECEAE4;
+      --ink-soft:#A3A8B4;
+      --rule:#2E3340;
+      --brass:#D6A550;
+      --brass-soft:#3A2F1C;
+      --oxblood:#C26A7C;
+      --on-accent:#15171D;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ground:#111319;
+    --panel:#1A1D25;
+    --ink:#ECEAE4;
+    --ink-soft:#A3A8B4;
+    --rule:#2E3340;
+    --brass:#D6A550;
+    --brass-soft:#3A2F1C;
+    --oxblood:#C26A7C;
+    --on-accent:#15171D;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--serif);font-size:1.0625rem;line-height:1.6;
+    padding-inline:clamp(16px,4vw,48px);
+  }
+  .wrap{max-width:1120px;margin-inline:auto}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--brass);outline-offset:3px;
+  }
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:.95}
+  .label{
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* ---------- top bar ---------- */
+  .top{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    padding-block:20px;border-bottom:1px solid var(--rule);
+  }
+  .top .mark{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase}
+  .top nav{display:flex;gap:20px;flex-wrap:wrap}
+  .top nav a{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft)}
+  .top nav a:hover{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);
+    align-items:end;padding-block:clamp(40px,8vw,88px) clamp(32px,5vw,56px);
+  }
+  .hero h1{
+    font-weight:900;text-transform:uppercase;
+    font-size:clamp(4rem,13vw,10.5rem);letter-spacing:-.01em;line-height:.82;
+  }
+  .hero h1 .instr{display:block;color:var(--brass);font-weight:500;font-size:.34em;letter-spacing:.06em;margin-top:.35em;line-height:1}
+  .hero .pitch{font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.5;max-width:34ch;margin:0 0 24px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:12px 18px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    text-decoration:none;cursor:pointer;border-radius:2px;
+  }
+  .btn.primary{background:var(--ink);color:var(--ground)}
+  .btn:hover{border-color:var(--brass)}
+  .btn.primary:hover{background:var(--brass);border-color:var(--brass);color:var(--on-accent)}
+
+  /* strings: the one moving thing on the page */
+  .strings{position:relative;margin-block:8px 0;border-block:1px solid var(--rule);padding-block:18px}
+  .string{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:12px;height:30px;cursor:pointer}
+  .string span{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft)}
+  .string svg{width:100%;height:30px;display:block;overflow:visible}
+  .string path{fill:none;stroke:var(--ink);stroke-linecap:round}
+  .string:hover path,.string.plucked path{stroke:var(--brass)}
+  .strings .hint{position:absolute;right:0;bottom:-26px}
+
+  /* ---------- sections ---------- */
+  section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+  .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(16px,4vw,48px);margin-bottom:36px;align-items:end}
+  .sec-head h2{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:700;text-transform:uppercase}
+  .sec-head p{margin:0;color:var(--ink-soft);max-width:60ch}
+
+  /* about */
+  .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px)}
+  .portrait{
+    aspect-ratio:4/5;max-width:100%;background:var(--panel);border:1px solid var(--rule);
+    display:grid;place-items:center;text-align:center;padding:24px;color:var(--ink-soft);
+  }
+  .portrait:has(img){padding:0}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:42% center}
+  .bio p{margin:0 0 1em;max-width:62ch}
+  .bio p:first-child::first-letter{font-family:var(--display);font-weight:900;float:left;font-size:4.2em;line-height:.8;padding:.06em .08em 0 0;color:var(--brass)}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
+  .facts div{background:var(--ground);padding:16px}
+  .facts b{display:block;font-family:var(--display);font-size:2.2rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+
+  /* formats */
+  .formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .format{background:var(--ground);padding:24px;display:flex;flex-direction:column;gap:10px}
+  .format h3{font-size:1.9rem;font-weight:700;text-transform:uppercase}
+  .format p{margin:0;color:var(--ink-soft);font-size:1rem}
+  .format .meta{margin-top:auto;font-family:var(--mono);font-size:.78rem;color:var(--brass);letter-spacing:.04em}
+
+  /* dates */
+  .dates{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+  .date{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px;align-items:center;padding-block:18px;border-bottom:1px solid var(--rule)}
+  .date .when{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1;text-transform:uppercase;font-variant-numeric:tabular-nums}
+  .date .when small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--ink-soft);letter-spacing:.08em;margin-top:6px}
+  .date .what b{display:block;font-weight:600}
+  .date .what span{color:var(--ink-soft);font-size:.95rem}
+  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-soft);white-space:nowrap}
+  .chip.sample{border-color:var(--oxblood);color:var(--oxblood)}
+
+  /* listen + repertoire */
+  .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px)}
+  .tracks{list-style:none;margin:0;padding:0}
+  .tracks li{border-bottom:1px solid var(--rule)}
+  .tracks a{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding-block:14px;text-decoration:none}
+  .tracks .play{width:44px;height:44px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center}
+  .tracks a:hover .play{background:var(--brass);border-color:var(--brass)}
+  .tracks a:hover .play svg{fill:var(--on-accent)}
+  .tracks .play svg{width:14px;height:14px;fill:var(--ink);margin-left:3px}
+  .tracks small{display:block;color:var(--ink-soft);font-size:.9rem}
+  .tracks .src{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
+  .setlist{font-family:var(--serif);margin:0;padding:0;list-style:none;counter-reset:tune}
+  .setlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding-block:10px;border-bottom:1px dotted var(--rule)}
+  .setlist em{font-style:italic;font-weight:600}
+  .setlist .by{display:block;color:var(--ink-soft);font-size:.9rem}
+  .setlist .key{font-family:var(--mono);font-size:.78rem;color:var(--brass);white-space:nowrap;align-self:center;font-variant-numeric:tabular-nums}
+
+  /* quotes */
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,48px)}
+  blockquote{margin:0;font-size:1.25rem;line-height:1.45;font-style:italic}
+  blockquote footer{margin-top:12px;font-style:normal}
+
+  /* booking */
+  .booking{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,5vw,64px)}
+  .contact-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:12px;border-bottom:1px solid var(--rule)}
+  .contact-line .v{font-family:var(--mono);font-size:1rem;user-select:all;word-break:break-all}
+  .copy{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-soft);padding:4px 10px;cursor:pointer;border-radius:2px}
+  .copy:hover{border-color:var(--brass);color:var(--ink)}
+  form{display:grid;gap:14px;background:var(--panel);padding:clamp(18px,3vw,28px);border:1px solid var(--rule)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{display:grid;gap:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  input,select,textarea{font:inherit;font-family:var(--serif);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--ink);background:var(--ground);border:1px solid var(--rule);padding:10px 12px;border-radius:2px;width:100%}
+  textarea{min-height:88px;resize:vertical}
+  .out{white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:var(--ground);border:1px dashed var(--rule);padding:14px;margin:0}
+  .status{font-family:var(--mono);font-size:.8rem;color:var(--brass);min-height:1.2em;margin:0}
+
+  /* placeholder art for empty photo slots */
+  .ph{
+    width:100%;height:100%;display:grid;place-items:center;text-align:center;padding:16px;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--rule) 55%, transparent) 10px 11px),
+      var(--panel);
+    color:var(--ink-soft);font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  /* ---------- played-with wall (inside About) ---------- */
+  .wall{margin-top:clamp(40px,6vw,64px)}
+  .wall-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  .wall-head h3{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;text-transform:uppercase}
+  .wall-view{overflow:hidden;padding-block:14px 22px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .wall-track{display:flex;gap:22px;width:max-content;animation:wallscroll var(--wall-dur,48s) linear infinite}
+  .wall.paused .wall-track,.wall-view:hover .wall-track,.wall-view:focus-within .wall-track{animation-play-state:paused}
+  @keyframes wallscroll{to{transform:translateX(calc(-50% - 11px))}}
+  .polaroid{
+    width:210px;flex:none;margin:0;background:var(--ground);border:1px solid var(--rule);padding:10px 10px 14px;
+    box-shadow:0 6px 18px -10px rgba(0,0,0,.35);transition:transform .25s ease;
+  }
+  .polaroid:nth-child(3n+1){transform:rotate(-2deg)}
+  .polaroid:nth-child(3n+2){transform:rotate(1.5deg) translateY(6px)}
+  .polaroid:nth-child(3n){transform:rotate(-.6deg) translateY(-4px)}
+  .polaroid:hover{transform:rotate(0) scale(1.04);z-index:1}
+  .polaroid .pic{aspect-ratio:1/1;overflow:hidden;background:var(--panel)}
+  .polaroid img{width:100%;height:100%;object-fit:cover;display:block}
+  .polaroid figcaption{margin-top:10px;line-height:1.3}
+  .polaroid figcaption b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+  .polaroid figcaption span{display:block;font-size:.88rem;color:var(--ink-soft)}
+  .polaroid figcaption small{display:block;font-family:var(--mono);font-size:.7rem;color:var(--brass);letter-spacing:.06em;margin-top:4px}
+  @media (prefers-reduced-motion: reduce){
+    .wall-view{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+    .wall-track [aria-hidden="true"]{display:none}
+  }
+
+  /* ---------- gallery ---------- */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .filters button{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--rule);background:transparent;color:var(--ink-soft);cursor:pointer;border-radius:2px}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));grid-auto-rows:190px;grid-auto-flow:dense;gap:12px}
+  .gitem{position:relative;margin:0;overflow:hidden;background:var(--panel);border:1px solid var(--rule)}
+  .gitem.wide{grid-column:span 2}
+  .gitem.tall{grid-row:span 2}
+  .gitem img,.gitem video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .gitem button.open{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+  .gitem button.open:focus-visible{outline:2px solid var(--brass);outline-offset:-4px}
+  .gitem figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-size:.88rem;line-height:1.35;
+    background:linear-gradient(transparent, rgba(10,11,15,.82));color:#F3F1EC;pointer-events:none;
+  }
+  .gitem figcaption small{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+  .gitem.has-video figcaption{position:static;background:var(--ground);color:var(--ink);pointer-events:auto}
+  .gitem.has-video{display:flex;flex-direction:column}
+  .gitem.has-video video{flex:1;min-height:0}
+  .vlink{display:grid;place-items:center;align-content:center;gap:12px;width:100%;height:100%;text-decoration:none;
+    background:repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--rule) 55%, transparent) 10px 11px), var(--panel)}
+  .vlink .play{width:62px;height:62px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+  .vlink .play svg{width:18px;height:18px;fill:var(--ground);margin-left:4px}
+  .vlink:hover .play{background:var(--brass)}
+  .vlink .src{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .vlink + figcaption{padding-bottom:12px}
+  @media (max-width:520px){.gitem.wide{grid-column:span 1}.gallery{grid-auto-rows:220px}}
+
+  /* lightbox */
+  .lightbox{position:fixed;inset:0;z-index:50;background:rgba(8,9,12,.92);display:grid;grid-template-rows:1fr auto;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+  .lightbox img{max-width:100%;max-height:100%;margin:auto;object-fit:contain;min-height:0}
+  .lb-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#F3F1EC;padding-top:12px;flex-wrap:wrap}
+  .lb-bar p{margin:0;max-width:70ch}
+  .lb-bar .ctl{display:flex;gap:8px}
+  .lb-bar button{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#F3F1EC;border:1px solid rgba(255,255,255,.35);padding:8px 12px;cursor:pointer;border-radius:2px}
+  .lb-bar button:hover{border-color:#D6A550;color:#D6A550}
+
+  footer.site{padding-block:32px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:.9rem}
+  footer.site .links{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+
+  @media (max-width:820px){
+    .hero,.about,.two,.booking,.sec-head{grid-template-columns:minmax(0,1fr)}
+    .portrait{max-width:360px}
+  }
+  @media (max-width:520px){
+    .facts{grid-template-columns:minmax(0,1fr)}
+    .row{grid-template-columns:minmax(0,1fr)}
+    .date{grid-template-columns:84px minmax(0,1fr)}
+    .date .chip{grid-column:2;justify-self:start}
+    .top nav{gap:14px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="mark" data-f="name"></div>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#hire">Hire</a>
+      <a href="#dates">Dates</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#listen">Listen</a>
+      <a href="#booking">Booking</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="label" data-f="region"></p>
+      <h1><span data-f="name"></span><span class="instr" data-f="instrument"></span></h1>
+    </div>
+    <div>
+      <p class="pitch" data-f="pitch"></p>
+      <div class="cta">
+        <a class="btn primary" href="#booking">Book a date</a>
+        <a class="btn" href="#listen">Listen</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="strings" id="strings" aria-label="Bass strings. Hover or tap to pluck.">
+    <!-- filled by script: G D A E, highest to lowest, as on a bass seen from the player's side -->
+    <span class="label hint">Hover or tap a string</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <div class="about">
+      <div class="portrait" id="portrait"></div>
+      <div>
+        <p class="label">About</p>
+        <div class="bio" id="bio"></div>
+        <div class="facts" id="facts"></div>
+      </div>
+    </div>
+
+    <div class="wall" id="wall">
+      <div class="wall-head">
+        <div>
+          <p class="label" style="margin:0 0 6px">On the bandstand with</p>
+          <h3>Played with</h3>
+        </div>
+        <button class="copy" type="button" id="wallToggle" aria-pressed="false">Pause</button>
+      </div>
+      <div class="wall-view" tabindex="0" aria-label="Photos of musicians I have played with. Hover or focus to pause.">
+        <div class="wall-track" id="wallTrack"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hire">
+    <div class="sec-head">
+      <h2>Ways to hire</h2>
+      <p data-f="hireIntro"></p>
+    </div>
+    <div class="formats" id="formats"></div>
+  </section>
+
+  <section id="dates">
+    <div class="sec-head">
+      <h2>Upcoming</h2>
+      <p>Public dates. Private events are not listed.</p>
+    </div>
+    <ul class="dates" id="dateList"></ul>
+  </section>
+
+  <section id="gallery">
+    <div class="sec-head">
+      <h2>Gallery</h2>
+      <p>Photos and video from gigs, sessions and rehearsals. Select a photo to see it larger.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter gallery">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
+      <button type="button" data-filter="video" aria-pressed="false">Videos</button>
+    </div>
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
+  <section id="listen">
+    <div class="two">
+      <div>
+        <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>Listen</h2></div>
+        <ul class="tracks" id="tracks"></ul>
+      </div>
+      <div>
+        <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>From the book</h2></div>
+        <p class="label" style="margin-top:0">A sample of tunes I call, with the key I usually take them in</p>
+        <ul class="setlist" id="setlist"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="words">
+    <div class="sec-head">
+      <h2>Said about the playing</h2>
+      <p>Short quotes from bandleaders and presenters.</p>
+    </div>
+    <div class="quotes" id="quotes"></div>
+  </section>
+
+  <section id="booking">
+    <div class="booking">
+      <div>
+        <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>Booking</h2></div>
+        <p style="max-width:44ch;margin-top:0" data-f="bookingNote"></p>
+        <div class="contact-line"><span class="label" style="width:64px">Email</span><span class="v" id="email"></span><button class="copy" type="button" data-copy="email">Copy</button></div>
+        <div class="contact-line"><span class="label" style="width:64px">Phone</span><span class="v" id="phone"></span><button class="copy" type="button" data-copy="phone">Copy</button></div>
+        <p class="status" id="contactStatus" role="status"></p>
+      </div>
+      <form id="inquiry" novalidate>
+        <p class="label" style="margin:0">Write your inquiry here, then copy it into an email</p>
+        <div class="row">
+          <label for="q-name">Your name<input id="q-name" type="text" autocomplete="name" value="Pat Rivera"></label>
+          <label for="q-org">Venue or organization<input id="q-org" type="text" value="Riverside Public Library"></label>
+        </div>
+        <div class="row">
+          <label for="q-date">Date<input id="q-date" type="date" value="2027-02-14"></label>
+          <label for="q-format">Format<select id="q-format"></select></label>
+        </div>
+        <label for="q-notes">Details<textarea id="q-notes">Sunday afternoon concert, 60 minutes, about 80 seats. We have a piano.</textarea></label>
+        <pre class="out" id="q-out" aria-live="polite"></pre>
+        <div class="cta">
+          <button class="btn primary" type="submit">Copy inquiry</button>
+        </div>
+        <p class="status" id="q-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span>© <span id="yr"></span> <span data-f="name"></span></span>
+    <span class="links" id="social"></span>
+  </footer>
+</div>
+
+<script>
+/* =================================================================
+   EDIT EVERYTHING HERE
+   Replace each value with your own. Items marked sample:true show a
+   red "Example" tag on the page. Delete that line once a date is real.
+   ================================================================= */
+const SITE = {
+  name: "Ben Rubens",
+  instrument: "Upright & electric bass",
+  region: "Springfield, NJ · New Jersey / New York City",
+  pitch: "A steady, swinging low end for bands, clubs, libraries and private events. Fifteen years on the bandstand across the New Jersey and New York scene.",
+
+  // Photo: put a URL or a data: URI here. Leave empty to show the placeholder box.
+  photo: "ben-rubens.jpg",
+
+  bio: [
+    "Write two or three short paragraphs here. Start with what you do and where: a New Jersey bassist who has spent more than fifteen years holding down the bottom for bandleaders across New Jersey and New York City.",
+    "Then say what you sound like and who you have played with. Name the bands, rooms and festivals you are proudest of. Presenters skim, so keep each sentence concrete.",
+    "Finish with what you are doing now, for example leading your own trio, hosting a monthly session, or bringing a jazz program to libraries and community series."
+  ],
+
+  // PLAYED WITH: the rotating picture wall under your bio.
+  // photo: an image URL (or data: URI). Leave "" to show a placeholder.
+  // Add as many as you like; the wall scrolls on its own and pauses on hover.
+  playedWith: [
+    { photo: "", name: "Musician's name", role: "Saxophone",  note: "Club or festival, year" },
+    { photo: "", name: "Musician's name", role: "Piano",      note: "Tour or recording, year" },
+    { photo: "", name: "Musician's name", role: "Drums",      note: "Venue, year" },
+    { photo: "", name: "Musician's name", role: "Vocals",     note: "Concert series, year" },
+    { photo: "", name: "Musician's name", role: "Trumpet",    note: "Festival, year" },
+    { photo: "", name: "Musician's name", role: "Guitar",     note: "Session, year" },
+    { photo: "", name: "Musician's name", role: "Bandleader", note: "Residency, years" }
+  ],
+
+  // GALLERY: photos and videos.
+  // type "photo": src = image URL. size can be "", "wide" or "tall".
+  // type "video": either src = a video file URL (.mp4) plus optional poster image,
+  //               or url = a YouTube / Vimeo / Instagram link that opens in a new tab.
+  gallery: [
+    { type: "photo", src: "", caption: "Trio night, add venue and date",        size: "wide" },
+    { type: "video", url: "https://www.youtube.com/", source: "YouTube", caption: "Live clip: add tune, band and venue" },
+    { type: "photo", src: "", caption: "Soundcheck, add venue",                 size: "tall" },
+    { type: "photo", src: "", caption: "With the quartet, add festival and year", size: "" },
+    { type: "video", url: "https://vimeo.com/",   source: "Vimeo",   caption: "Bass feature: add tune and date" },
+    { type: "photo", src: "", caption: "Library concert, add town and date",    size: "" },
+    { type: "photo", src: "", caption: "Studio session, add project name",      size: "wide" },
+    { type: "photo", src: "", caption: "Backstage with the band, add event",    size: "wide" }
+  ],
+
+  facts: [
+    { n: "15+", t: "Years performing jazz" },
+    { n: "NJ · NYC", t: "Home base" },
+    { n: "2–5", t: "Piece groups I lead" }
+  ],
+
+  hireIntro: "Book the band for a room, a series or an event, or call me as the bass player for your group.",
+  formats: [
+    { title: "Trio",              text: "Piano or guitar, bass and drums. The standard club and restaurant setup, sized for dinner rooms.", meta: "2–3 sets · acoustic-friendly" },
+    { title: "Quartet",           text: "Trio plus saxophone, trumpet or vocals for a fuller sound at clubs, festivals and concerts.",      meta: "2–3 sets · small PA" },
+    { title: "Library concert",   text: "A one-hour program that plays the music and briefly explains how a jazz band works together.",     meta: "60 min · all ages" },
+    { title: "Jam session host",  text: "I bring the house band and run the list so the night stays musical for players and the room.",      meta: "Weekly or monthly" },
+    { title: "Sideman",           text: "Reads charts, knows the book, arrives early. Upright or electric as the gig needs.",               meta: "Rehearsals · recording · live" }
+  ],
+
+  // Dates: sample entries use generic venue names. Replace them with your real dates.
+  dates: [
+    { date: "2026-10-15", time: "7:00–10:00 PM", title: "Ben Rubens Trio",     where: "Restaurant residency · Union County, NJ", tag: "Monthly",  sample: true },
+    { date: "2026-11-08", time: "3:00 PM",       title: "Sunday Jazz Concert", where: "Public library series · Essex County, NJ", tag: "Free",     sample: true },
+    { date: "2026-12-05", time: "8:00 PM",       title: "Guest with a quartet", where: "Jazz club · Morris County, NJ",          tag: "Sideman",  sample: true }
+  ],
+
+  // Listen: link to your own recordings (Bandcamp, SoundCloud, YouTube). Embeds are not used; each item opens in a new tab.
+  tracks: [
+    { title: "Trio, live set", note: "Add a clip that shows your time and sound", src: "YouTube",    url: "https://www.youtube.com/" },
+    { title: "Quartet, studio", note: "Add a recording with a solo or a feature",  src: "Bandcamp",   url: "https://bandcamp.com/" },
+    { title: "Duo, bass and voice", note: "Add something intimate for private events", src: "SoundCloud", url: "https://soundcloud.com/" }
+  ],
+
+  // Repertoire: full title (shown in italics) plus the full names of the composers and lyricists.
+  setlist: [
+    { title: "Autumn Leaves",           by: "Joseph Kosma, lyrics by Johnny Mercer",           key: "G minor" },
+    { title: "All the Things You Are",  by: "Jerome Kern, lyrics by Oscar Hammerstein II",     key: "A♭ major" },
+    { title: "Blue Bossa",              by: "Kenny Dorham",                                     key: "C minor" },
+    { title: "Stolen Moments",          by: "Oliver Nelson",                                    key: "C minor" },
+    { title: "Mr. P.C.",                by: "John Coltrane",                                    key: "C minor" },
+    { title: "Days of Wine and Roses",  by: "Henry Mancini, lyrics by Johnny Mercer",          key: "F major" }
+  ],
+
+  // Quotes: use only real quotes you have permission to share. Until then the placeholders say what to add.
+  quotes: [
+    { text: "Add a one- or two-sentence quote from a bandleader you play with.", who: "Name, bandleader" },
+    { text: "Add a quote from a venue owner or series presenter who has booked you.", who: "Name, venue or series" }
+  ],
+
+  bookingNote: "Send the date, the room and the format you have in mind. I reply within two days.",
+  email: "booking@yourname.com",
+  phone: "(000) 000-0000",
+  social: [
+    { label: "Instagram", url: "https://instagram.com/" },
+    { label: "YouTube",   url: "https://youtube.com/" },
+    { label: "Bandcamp",  url: "https://bandcamp.com/" }
+  ]
+};
+/* ================================================================= */
+
+const $ = (s, r=document) => r.querySelector(s);
+const el = (tag, attrs={}, kids=[]) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (k === "text") n.textContent = v; else if (k === "html") n.innerHTML = v; else n.setAttribute(k, v);
+  }
+  (Array.isArray(kids)?kids:[kids]).forEach(c => c && n.append(c));
+  return n;
+};
+
+document.querySelectorAll("[data-f]").forEach(n => { n.textContent = SITE[n.dataset.f] ?? ""; });
+document.title = SITE.name + " · Jazz Bass";
+$("#yr").textContent = new Date().getFullYear();
+
+/* portrait */
+const portrait = $("#portrait");
+if (SITE.photo) portrait.append(el("img", { src: SITE.photo, alt: "Portrait of " + SITE.name }));
+else portrait.append(el("span", { class: "label", text: "Add a photo of you with the bass (4:5 portrait)" }));
+
+/* bio + facts */
+SITE.bio.forEach(p => $("#bio").append(el("p", { text: p })));
+SITE.facts.forEach(f => $("#facts").append(el("div", {}, [el("b", { text: f.n }), el("span", { class: "label", text: f.t })])));
+
+/* played-with wall: the list is rendered twice so the scroll loops seamlessly */
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const track = $("#wallTrack");
+const polaroid = (p, dupe) => {
+  const pic = el("div", { class: "pic" }, p.photo ? el("img", { src: p.photo, alt: p.name, loading: "lazy" }) : el("div", { class: "ph", text: "Add photo" }));
+  const fig = el("figure", { class: "polaroid" }, [pic, el("figcaption", {}, [el("b", { text: p.name }), el("span", { text: p.role }), el("small", { text: p.note })])]);
+  if (dupe) fig.setAttribute("aria-hidden", "true");
+  return fig;
+};
+SITE.playedWith.forEach(p => track.append(polaroid(p, false)));
+SITE.playedWith.forEach(p => track.append(polaroid(p, true)));
+track.style.setProperty("--wall-dur", Math.max(24, SITE.playedWith.length * 7) + "s");
+const wallBtn = $("#wallToggle");
+if (reduceMotion) wallBtn.hidden = true;
+wallBtn.addEventListener("click", () => {
+  const paused = $("#wall").classList.toggle("paused");
+  wallBtn.setAttribute("aria-pressed", String(paused));
+  wallBtn.textContent = paused ? "Play" : "Pause";
+});
+
+/* gallery */
+const grid = $("#galleryGrid");
+const photos = SITE.gallery.filter(g => g.type === "photo");
+const playSvg = '<svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z"/></svg>';
+SITE.gallery.forEach(g => {
+  const fig = el("figure", { class: "gitem " + (g.size || ""), "data-type": g.type });
+  if (g.type === "photo") {
+    const i = photos.indexOf(g);
+    const inner = g.src ? el("img", { src: g.src, alt: g.caption, loading: "lazy" }) : el("div", { class: "ph", text: "Add photo" });
+    const btn = el("button", { class: "open", type: "button", "aria-label": "Open photo: " + g.caption }, inner);
+    btn.addEventListener("click", () => openLightbox(i));
+    fig.append(btn, el("figcaption", { text: g.caption }));
+  } else if (g.src) {
+    fig.classList.add("has-video");
+    const v = el("video", { src: g.src, controls: "", preload: "metadata", playsinline: "" });
+    if (g.poster) v.setAttribute("poster", g.poster);
+    fig.append(v, el("figcaption", {}, [el("small", { text: "Video" }), document.createTextNode(g.caption)]));
+  } else {
+    fig.classList.add("has-video");
+    fig.append(
+      el("a", { class: "vlink", href: g.url, target: "_blank", rel: "noopener", "aria-label": "Watch on " + (g.source || "video site") + ": " + g.caption }, [
+        el("span", { class: "play", html: playSvg }),
+        el("span", { class: "src", text: "Watch on " + (g.source || "video site") })
+      ]),
+      el("figcaption", {}, [el("small", { text: "Video" }), document.createTextNode(g.caption)])
+    );
+  }
+  grid.append(fig);
+});
+document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("[data-filter]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  grid.querySelectorAll(".gitem").forEach(it => { it.hidden = b.dataset.filter !== "all" && it.dataset.type !== b.dataset.filter; });
+}));
+
+/* lightbox for photos */
+let lb = null, lbIndex = 0, lbReturn = null;
+function renderLightbox(){
+  const g = photos[lbIndex];
+  lb.querySelector(".lb-pic").replaceChildren(g.src ? el("img", { src: g.src, alt: g.caption }) : el("div", { class: "ph", text: "Add photo", style: "width:min(720px,100%);height:min(480px,60vh);margin:auto" }));
+  lb.querySelector(".lb-cap").textContent = g.caption + "  ·  " + (lbIndex + 1) + " of " + photos.length;
+}
+function stepLightbox(d){ lbIndex = (lbIndex + d + photos.length) % photos.length; renderLightbox(); }
+function openLightbox(i){
+  lbIndex = i; lbReturn = document.activeElement;
+  lb = el("div", { class: "lightbox", role: "dialog", "aria-modal": "true", "aria-label": "Photo viewer" }, [
+    el("div", { class: "lb-pic", style: "display:grid;min-height:0" }),
+    el("div", { class: "lb-bar" }, [el("p", { class: "lb-cap" }), el("div", { class: "ctl" }, [
+      el("button", { type: "button", "data-act": "prev", text: "Previous" }),
+      el("button", { type: "button", "data-act": "next", text: "Next" }),
+      el("button", { type: "button", "data-act": "close", text: "Close" })
+    ])])
+  ]);
+  lb.addEventListener("click", e => {
+    const act = e.target.dataset && e.target.dataset.act;
+    if (act === "prev") stepLightbox(-1);
+    else if (act === "next") stepLightbox(1);
+    else if (act === "close" || e.target === lb) closeLightbox();
+  });
+  document.body.append(lb);
+  renderLightbox();
+  lb.querySelector('[data-act="close"]').focus();
+}
+function closeLightbox(){ if (!lb) return; lb.remove(); lb = null; lbReturn && lbReturn.focus(); }
+document.addEventListener("keydown", e => {
+  if (!lb) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") stepLightbox(1);
+  if (e.key === "ArrowLeft") stepLightbox(-1);
+});
+
+/* formats */
+SITE.formats.forEach(f => $("#formats").append(
+  el("article", { class: "format" }, [el("h3", { text: f.title }), el("p", { text: f.text }), el("span", { class: "meta", text: f.meta })])
+));
+
+/* dates */
+const fmtDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+const fmtWk  = new Intl.DateTimeFormat("en-US", { weekday: "long", timeZone: "UTC" });
+SITE.dates.forEach(d => {
+  const dt = new Date(d.date + "T00:00:00Z");
+  $("#dateList").append(el("li", { class: "date" }, [
+    el("div", { class: "when" }, [document.createTextNode(fmtDay.format(dt)), el("small", { text: fmtWk.format(dt) + " · " + d.time })]),
+    el("div", { class: "what" }, [el("b", { text: d.title }), el("span", { text: d.where })]),
+    el("span", { class: "chip" + (d.sample ? " sample" : ""), text: d.sample ? "Example" : d.tag })
+  ]));
+});
+
+/* tracks */
+const playIcon = '<svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z"/></svg>';
+SITE.tracks.forEach(t => $("#tracks").append(el("li", {}, [
+  el("a", { href: t.url, target: "_blank", rel: "noopener" }, [
+    el("span", { class: "play", html: playIcon }),
+    el("span", {}, [document.createTextNode(t.title), el("small", { text: t.note })]),
+    el("span", { class: "src", text: t.src })
+  ])
+])));
+
+/* setlist */
+SITE.setlist.forEach(s => $("#setlist").append(el("li", {}, [
+  el("span", {}, [el("em", { text: s.title }), el("span", { class: "by", text: s.by })]),
+  el("span", { class: "key", text: s.key })
+])));
+
+/* quotes */
+SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
+  document.createTextNode("“" + q.text + "”"),
+  el("footer", { class: "label", text: "— " + q.who })
+])));
+
+/* contact */
+$("#email").textContent = SITE.email;
+$("#phone").textContent = SITE.phone;
+SITE.social.forEach(s => $("#social").append(el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.label })));
+
+async function copyText(text, statusEl, sourceEl){
+  try { await navigator.clipboard.writeText(text); statusEl.textContent = "Copied to clipboard."; }
+  catch(e){
+    if (sourceEl){ const r = document.createRange(); r.selectNodeContents(sourceEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    statusEl.textContent = "Copy was blocked here. The text is selected, so press Ctrl+C or ⌘C.";
+  }
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const src = $("#" + b.dataset.copy);
+  copyText(src.textContent, $("#contactStatus"), src);
+}));
+
+/* inquiry builder */
+const fSel = $("#q-format");
+SITE.formats.forEach(f => fSel.append(el("option", { value: f.title, text: f.title })));
+fSel.value = "Library concert";
+const fmtLong = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+function buildInquiry(){
+  const v = id => $("#" + id).value.trim();
+  const d = v("q-date") ? fmtLong.format(new Date(v("q-date") + "T00:00:00Z")) : "(date to be set)";
+  return `To: ${SITE.email}\nSubject: Booking inquiry – ${v("q-format")} – ${d}\n\nHi ${SITE.name.split(" ")[0]},\n\nI'm ${v("q-name") || "(your name)"} from ${v("q-org") || "(venue)"}. We'd like to book a ${v("q-format").toLowerCase()} on ${d}.\n\n${v("q-notes")}\n\nThanks,\n${v("q-name") || ""}`;
+}
+const out = $("#q-out");
+const refresh = () => { out.textContent = buildInquiry(); };
+$("#inquiry").addEventListener("input", refresh);
+$("#inquiry").addEventListener("submit", e => { e.preventDefault(); copyText(out.textContent, $("#q-status"), out); });
+refresh();
+
+/* strings: G D A E, thinnest to thickest */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const box = $("#strings");
+[["G",1.2],["D",1.8],["A",2.5],["E",3.3]].forEach(([name, w]) => {
+  const row = el("div", { class: "string", role: "button", tabindex: "0", "aria-label": "Pluck the " + name + " string" });
+  row.append(el("span", { text: name }));
+  row.insertAdjacentHTML("beforeend", `<svg viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 L1000 15" stroke-width="${w}" vector-effect="non-scaling-stroke"/></svg>`);
+  box.insertBefore(row, box.querySelector(".hint"));
+  const path = row.querySelector("path");
+  let raf = 0;
+  const pluck = () => {
+    if (reduce) { row.classList.add("plucked"); setTimeout(() => row.classList.remove("plucked"), 400); return; }
+    cancelAnimationFrame(raf);
+    const t0 = performance.now(), amp = 9 + w * 1.5, freq = 0.055 / w;
+    row.classList.add("plucked");
+    const step = now => {
+      const t = now - t0, a = amp * Math.exp(-t / 520);
+      if (a < 0.2) { path.setAttribute("d", "M0 15 L1000 15"); row.classList.remove("plucked"); return; }
+      const y = 15 + a * Math.sin(t * freq * 6.283);
+      path.setAttribute("d", `M0 15 Q500 ${(2 * y - 15).toFixed(2)} 1000 15`);
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  };
+  row.addEventListener("mouseenter", pluck);
+  row.addEventListener("click", pluck);
+  row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pluck(); } });
+});
+</script>
+</body>
+</html>
