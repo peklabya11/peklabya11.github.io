@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ben Rubens · Jazz Bass</title>
-<meta name="description" content="Ben Rubens, jazz bassist in New Jersey and New York City. Upright and electric bass for bands, clubs, libraries and private events.">
+<meta name="description" content="Ben Rubens, NJ/NYC jazz bassist. Featured on the Johnny O’Neal Trio album In the Moment with Roy Hargrove; performances at the Kennedy Center, the Apollo and Blue Note Milano.">
+<meta name="theme-color" content="#170E13">
 <meta property="og:title" content="Ben Rubens · Jazz Bass">
 <meta property="og:image" content="ben-rubens.jpg">
 <link rel="icon" href="ben-rubens.jpg">
@@ -20,49 +21,29 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Yellowtail&display=swap">
 <style>
   html{scroll-behavior:smooth}
   body{margin:0}
+  /* One deliberate look: a jazz club after dark. Warm lamp light, neon signs. */
   :root{
-    --ground:#ECEEF1;
-    --panel:#E1E4E9;
-    --ink:#15171D;
-    --ink-soft:#4A4F5C;
-    --rule:#C5CAD3;
-    --brass:#9A6A1E;
-    --brass-soft:#E7D5B3;
-    --oxblood:#6C2131;
-    --on-accent:#FFFFFF;
+    color-scheme:dark;
+    --ground:#170E13;      /* smoky room */
+    --panel:#24151C;       /* velvet booth */
+    --ink:#F7EBDC;         /* warm cream */
+    --ink-soft:#C9B3A3;
+    --rule:#43293A;
+    --brass:#FFB547;       /* stage-lamp amber */
+    --brass-soft:#4A3016;
+    --oxblood:#FF4F8F;     /* neon pink */
+    --teal:#3FE3D2;        /* electric teal, used sparingly */
+    --on-accent:#1A0F14;
+    --glow-amber:0 0 18px rgba(255,181,71,.55);
+    --glow-pink:0 0 6px rgba(255,79,143,.9), 0 0 22px rgba(255,79,143,.55), 0 0 48px rgba(255,79,143,.35);
     --display:"Big Shoulders Display", "Arial Narrow", "Helvetica Neue Condensed", Impact, sans-serif;
+    --script:"Yellowtail", "Brush Script MT", cursive;
     --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
     --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      color-scheme:dark;
-      --ground:#111319;
-      --panel:#1A1D25;
-      --ink:#ECEAE4;
-      --ink-soft:#A3A8B4;
-      --rule:#2E3340;
-      --brass:#D6A550;
-      --brass-soft:#3A2F1C;
-      --oxblood:#C26A7C;
-      --on-accent:#15171D;
-    }
-  }
-  :root[data-theme="dark"]{
-    color-scheme:dark;
-    --ground:#111319;
-    --panel:#1A1D25;
-    --ink:#ECEAE4;
-    --ink-soft:#A3A8B4;
-    --rule:#2E3340;
-    --brass:#D6A550;
-    --brass-soft:#3A2F1C;
-    --oxblood:#C26A7C;
-    --on-accent:#15171D;
   }
 
   *{box-sizing:border-box}
@@ -101,6 +82,7 @@
     font-size:clamp(4rem,13vw,10.5rem);letter-spacing:-.01em;line-height:.82;
   }
   .hero h1 .instr{display:block;color:var(--brass);font-weight:500;font-size:.34em;letter-spacing:.06em;margin-top:.35em;line-height:1}
+  .hero .pitch em{font-style:italic}
   .hero .pitch{font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.5;max-width:34ch;margin:0 0 24px}
   .cta{display:flex;gap:12px;flex-wrap:wrap}
   .btn{
@@ -285,12 +267,187 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;transition:none!important}
   }
+
+  /* =========================================================
+     JAZZ CLUB LAYER: lamp light, neon, marquee, vinyl, notes
+     ========================================================= */
+  body{
+    background:
+      radial-gradient(900px 600px at 12% -5%, rgba(255,181,71,.16), transparent 60%),
+      radial-gradient(800px 700px at 100% 35%, rgba(255,79,143,.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 85%, rgba(63,227,210,.06), transparent 60%),
+      var(--ground);
+    background-attachment:fixed;
+  }
+  html,body{overflow-x:clip}
+  ::selection{background:var(--oxblood);color:#fff}
+
+  /* header: name + a little "now playing" equalizer */
+  .top{position:relative;z-index:2}
+  .top .mark{display:flex;align-items:center;gap:12px;color:var(--ink)}
+  .eq{display:inline-flex;align-items:flex-end;gap:3px;height:18px}
+  .eq i{display:block;width:3px;height:100%;background:var(--brass);border-radius:1px;box-shadow:var(--glow-amber);transform-origin:bottom;animation:eq 1.1s ease-in-out infinite}
+  .eq i:nth-child(2){animation-duration:.8s;animation-delay:-.3s;background:var(--oxblood)}
+  .eq i:nth-child(3){animation-duration:1.3s;animation-delay:-.6s}
+  .eq i:nth-child(4){animation-duration:.95s;animation-delay:-.2s;background:var(--teal)}
+  @keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+  .top nav a:hover{color:var(--brass);text-shadow:var(--glow-amber)}
+
+  /* hero: stage light + drifting bokeh behind a neon sign */
+  .stage{position:relative;isolation:isolate}
+  .stage::before{
+    content:"";position:absolute;z-index:-1;inset:-200px 0 0;pointer-events:none;
+    background:radial-gradient(ellipse 40% 50% at 30% 38%, rgba(255,196,110,.22), transparent 72%);
+    animation:spot 14s ease-in-out infinite alternate;
+  }
+  @keyframes spot{from{transform:translateX(-4%)}to{transform:translateX(12%)}}
+  #haze{position:absolute;z-index:-1;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero .label{color:var(--teal)}
+  .hero h1 > span:first-child{
+    display:block;color:#FFF4F8;
+    text-shadow:var(--glow-pink);
+    animation:neon-on 2.4s steps(1,end) .2s both;
+  }
+  @keyframes neon-on{
+    0%{opacity:.15;text-shadow:none}
+    8%{opacity:1;text-shadow:var(--glow-pink)}
+    12%{opacity:.25;text-shadow:none}
+    18%{opacity:1;text-shadow:var(--glow-pink)}
+    22%{opacity:.4;text-shadow:none}
+    30%,100%{opacity:1;text-shadow:var(--glow-pink)}
+  }
+  .hero h1 .instr{
+    font-family:var(--script);text-transform:none;font-weight:400;letter-spacing:0;
+    font-size:.42em;margin-top:.2em;color:var(--brass);
+    text-shadow:0 0 8px rgba(255,181,71,.8), 0 0 26px rgba(255,181,71,.45);
+    transform:rotate(-3deg);transform-origin:left;display:inline-block;
+  }
+  .hero .pitch em{color:var(--brass)}
+
+  .btn{border-color:var(--ink);border-radius:999px;transition:box-shadow .2s, background .2s, color .2s, border-color .2s}
+  .btn.primary{background:var(--brass);border-color:var(--brass);color:var(--on-accent);box-shadow:0 0 0 0 rgba(255,181,71,.0), 0 8px 30px -8px rgba(255,181,71,.7)}
+  .btn.primary:hover{background:var(--oxblood);border-color:var(--oxblood);color:#fff;box-shadow:var(--glow-pink)}
+  .btn:not(.primary):hover{border-color:var(--teal);color:var(--teal);box-shadow:0 0 16px rgba(63,227,210,.35)}
+
+  /* strings glow when plucked; notes float up */
+  .strings{overflow:visible;border-color:var(--rule)}
+  .string path{stroke:#D9C3A8}
+  .string:hover path,.string.plucked path{stroke:var(--brass);filter:drop-shadow(0 0 4px rgba(255,181,71,.9))}
+  .note{position:absolute;pointer-events:none;font-size:1.4rem;color:var(--brass);text-shadow:var(--glow-amber);
+    animation:float-note 1.8s ease-out forwards}
+  .note.pink{color:var(--oxblood);text-shadow:var(--glow-pink)}
+  .note.teal{color:var(--teal);text-shadow:0 0 12px rgba(63,227,210,.8)}
+  @keyframes float-note{
+    0%{opacity:0;transform:translate(0,0) rotate(-10deg) scale(.7)}
+    15%{opacity:1}
+    100%{opacity:0;transform:translate(var(--dx,20px),-110px) rotate(14deg) scale(1.1)}
+  }
+
+  /* club marquee: chasing bulbs around a scrolling list of stages */
+  .marquee{
+    position:relative;margin-top:44px;padding:14px 0;overflow:hidden;margin-inline:calc(-1 * clamp(16px,4vw,48px));
+    background:linear-gradient(180deg,#2A1820,#1C1016);
+    border-block:2px solid var(--brass-soft);
+  }
+  .marquee::before,.marquee::after{
+    content:"";position:absolute;left:0;right:0;height:6px;
+    background:radial-gradient(circle at 6px 3px, #FFD58A 2px, rgba(255,213,138,.25) 3px, transparent 4px) 0 0/18px 6px repeat-x;
+    animation:bulbs .9s steps(3) infinite;filter:drop-shadow(0 0 3px rgba(255,190,90,.9));
+  }
+  .marquee::before{top:3px}
+  .marquee::after{bottom:3px;animation-direction:reverse}
+  @keyframes bulbs{to{background-position:18px 0}}
+  .marquee-track{display:flex;width:max-content;gap:0;animation:marquee 40s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    font-size:clamp(1.1rem,2.4vw,1.5rem);white-space:nowrap;padding-inline:22px;color:var(--ink);
+  }
+  .marquee-track span::after{content:"\2605";margin-left:44px;color:var(--oxblood);text-shadow:var(--glow-pink);font-size:.8em}
+  .marquee-track span:nth-child(3n+2){color:var(--brass);text-shadow:var(--glow-amber)}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* section headings: warm neon underline */
+  section{border-top-color:var(--rule)}
+  .sec-head h2{position:relative;color:var(--ink)}
+  .sec-head h2::after{content:"";display:block;width:64px;height:3px;margin-top:14px;border-radius:3px;
+    background:linear-gradient(90deg,var(--oxblood),var(--brass));box-shadow:0 0 12px rgba(255,79,143,.6)}
+  .label{color:var(--ink-soft)}
+  .bio p:first-child::first-letter{color:var(--brass);text-shadow:var(--glow-amber)}
+  .bio em,.setlist em{color:#FFD9A0}
+
+  /* portrait framed like a lit stage photo */
+  .portrait{border:0;box-shadow:0 0 0 1px var(--rule), 0 30px 60px -25px rgba(255,79,143,.45), -20px -20px 60px -30px rgba(255,181,71,.5)}
+  .facts{background:var(--rule);border-color:var(--rule)}
+  .facts div{background:var(--panel)}
+  .facts b{color:var(--brass);text-shadow:var(--glow-amber)}
+
+  /* polaroids stay cream, like real prints pinned in a club hallway */
+  .polaroid{background:#F4E7D2;border-color:#E4D2B6;box-shadow:0 14px 30px -12px rgba(0,0,0,.7), 0 0 0 1px rgba(0,0,0,.2)}
+  .polaroid figcaption b{color:#1E1116}
+  .polaroid figcaption span{color:#5C4A42}
+  .polaroid figcaption small{color:#B23A5E}
+  .polaroid .ph{background:repeating-linear-gradient(135deg, transparent 0 10px, rgba(0,0,0,.06) 10px 11px),#E7D6BC;color:#6E5A4E}
+  .wall-head h3{color:var(--ink)}
+  .wall-head .label{font-family:var(--script);font-size:1.5rem;letter-spacing:0;text-transform:none;color:var(--oxblood);text-shadow:var(--glow-pink)}
+
+  .format{background:var(--panel);transition:background .25s, box-shadow .25s}
+  .format:hover{background:#2E1A23;box-shadow:inset 0 -3px 0 var(--brass)}
+  .format h3{color:var(--ink)}
+  .formats{background:var(--rule);border-color:var(--rule)}
+
+  .dates{border-top-color:var(--brass)}
+  .date .when{color:var(--brass)}
+  .date:hover{background:linear-gradient(90deg, rgba(255,181,71,.07), transparent)}
+  .chip{border-radius:999px}
+  .chip.sample{box-shadow:0 0 10px rgba(255,79,143,.35)}
+
+  /* vinyl record spinning beside Listen */
+  .listen-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .vinyl{
+    width:96px;height:96px;flex:none;border-radius:50%;position:relative;
+    background:
+      radial-gradient(circle, var(--brass) 0 14%, #7A3A1A 14.5% 15.5%, transparent 16%),
+      repeating-radial-gradient(circle, #111 0 2px, #1d1d1d 2px 3px),
+      #111;
+    box-shadow:0 0 0 2px #2b2b2b, 0 10px 30px -8px rgba(0,0,0,.8);
+    animation:spin 3.2s linear infinite;
+  }
+  .vinyl::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 20deg, transparent 0 20%, rgba(255,255,255,.12) 25%, transparent 32% 70%, rgba(255,255,255,.08) 75%, transparent 82%)}
+  .vinyl::before{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:var(--ground);z-index:1}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .tracks .play{border-color:var(--brass)}
+  .tracks .play svg{fill:var(--brass)}
+  .tracks a:hover .play{box-shadow:var(--glow-amber)}
+  .setlist .key{color:var(--teal)}
+
+  blockquote{color:var(--ink)}
+  blockquote::before{content:"\201C";display:block;font-family:var(--script);font-size:3.4rem;line-height:.6;color:var(--oxblood);text-shadow:var(--glow-pink);margin-bottom:6px}
+
+  .filters button[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--on-accent)}
+  .filters button{border-radius:999px}
+  .gitem{border-color:var(--rule);transition:transform .25s, box-shadow .25s}
+  .gitem:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px rgba(255,79,143,.45)}
+  .vlink .play{background:var(--oxblood);box-shadow:var(--glow-pink)}
+  .vlink .play svg{fill:#fff}
+  .vlink:hover .play{background:var(--brass);box-shadow:var(--glow-amber)}
+
+  form{background:var(--panel);border-color:var(--rule)}
+  input,select,textarea{background:#1B1016;border-color:var(--rule)}
+  input:focus,select:focus,textarea:focus{border-color:var(--brass);box-shadow:0 0 0 3px rgba(255,181,71,.18)}
+
+  @media (prefers-reduced-motion: reduce){
+    .stage::before,.eq i,.marquee-track,.marquee::before,.marquee::after,.vinyl,.hero h1 > span:first-child{animation:none!important}
+    .marquee-track{flex-wrap:wrap;width:auto;justify-content:center}
+    .marquee-track span[aria-hidden="true"]{display:none}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="mark" data-f="name"></div>
+    <div class="mark"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-f="name"></span></div>
     <nav aria-label="Sections">
       <a href="#about">About</a>
       <a href="#hire">Hire</a>
@@ -301,6 +458,8 @@
     </nav>
   </header>
 
+  <div class="stage">
+  <canvas id="haze" aria-hidden="true"></canvas>
   <div class="hero">
     <div>
       <p class="label" data-f="region"></p>
@@ -319,6 +478,11 @@
     <!-- filled by script: G D A E, highest to lowest, as on a bass seen from the player's side -->
     <span class="label hint">Hover or tap a string</span>
   </div>
+  </div>
+</div>
+
+<div class="marquee" aria-label="Selected stages">
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
 <div class="wrap">
@@ -378,7 +542,7 @@
   <section id="listen">
     <div class="two">
       <div>
-        <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>Listen</h2></div>
+        <div class="listen-head" style="margin-bottom:20px"><div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin:0"><h2>Listen</h2></div><div class="vinyl" aria-hidden="true"></div></div>
         <ul class="tracks" id="tracks"></ul>
       </div>
       <div>
@@ -441,29 +605,33 @@
 const SITE = {
   name: "Ben Rubens",
   instrument: "Upright & electric bass",
-  region: "New Jersey / New York City",
-  pitch: "A steady, swinging low end for bands, clubs, libraries and private events. Fifteen years on the bandstand across the New Jersey and New York scene.",
+  region: "Springfield, NJ · New Jersey / New York City",
+  pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
 
   // Photo: put a URL or a data: URI here. Leave empty to show the placeholder box.
   photo: "ben-rubens.jpg",
 
+  // Bio paragraphs. Titles of albums and works go in <em>…</em> so they show in italics.
   bio: [
-    "Write two or three short paragraphs here. Start with what you do and where: a New Jersey bassist who has spent more than fifteen years holding down the bottom for bandleaders across New Jersey and New York City.",
-    "Then say what you sound like and who you have played with. Name the bands, rooms and festivals you are proudest of. Presenters skim, so keep each sentence concrete.",
-    "Finish with what you are doing now, for example leading your own trio, hosting a monthly session, or bringing a jazz program to libraries and community series."
+    "New Jersey\u2013based bassist Ben Rubens is the rhythm-section player bandleaders call when the music has to feel right. Working across the New Jersey and New York City scene, he has built a reputation for deep, swinging time, a warm and grounded sound, and the versatility to move from a bebop trio to a theater pit to a symphony orchestra.",
+    "His performances have taken him to some of the world\u2019s most celebrated stages: the Kennedy Center, the Apollo Theater and the Metropolitan Museum of Art; Blue Note Milano and Blue Note Beijing; and major festivals including the Nice Jazz Festival, Detroit Jazz Festival, Rochester International Jazz Festival, Brussels Jazz Festival, Gaume Jazz Festival and Red Sea Jazz Festival. He has performed in Italy, France, Belgium, Germany, China, Russia, Israel and Mexico.",
+    "On record, Rubens is featured on the Smoke Sessions release <em>In the Moment</em> by the Johnny O\u2019Neal Trio, featuring the late trumpet great Roy Hargrove, and on <em>Songs in the Key of Wonder</em> by James Austin Jr. He also recorded original compositions by the late jazz master Jerry Dodgion alongside Mr. Dodgion himself.",
+    "For three consecutive years he held the bass chair in the trio supporting NEA Jazz Master Sheila Jordan at Roni Ben-Hur\u2019s RBH Jazz Camp in Burlington, Vermont. In 2016 he spent a week on the bandstand with bebop piano master Hod O\u2019Brien, celebrating Mr. O\u2019Brien\u2019s 80th birthday.",
+    "Beyond jazz, Rubens has played numerous regional musical theater productions, including the June 6, 2022 performance of <em>Plays for the Plague Year</em> by Pulitzer Prize\u2013winning playwright Suzan-Lori Parks, and performed symphonic repertoire for many years with the Livingston Symphony Orchestra of New Jersey.",
+    "He studied bass with legendary jazz master Harvie S and learned from Bob Cranshaw in 2013\u20132014. Rubens holds a Bachelor of Music in Jazz Performance from the Manhattan School of Music and a master\u2019s degree in Music Education from Rutgers University. He is available for club dates, concerts, festivals, recording sessions, library and community series, and private events."
   ],
 
   // PLAYED WITH: the rotating picture wall under your bio.
   // photo: an image URL (or data: URI). Leave "" to show a placeholder.
   // Add as many as you like; the wall scrolls on its own and pauses on hover.
   playedWith: [
-    { photo: "", name: "Musician's name", role: "Saxophone",  note: "Club or festival, year" },
-    { photo: "", name: "Musician's name", role: "Piano",      note: "Tour or recording, year" },
-    { photo: "", name: "Musician's name", role: "Drums",      note: "Venue, year" },
-    { photo: "", name: "Musician's name", role: "Vocals",     note: "Concert series, year" },
-    { photo: "", name: "Musician's name", role: "Trumpet",    note: "Festival, year" },
-    { photo: "", name: "Musician's name", role: "Guitar",     note: "Session, year" },
-    { photo: "", name: "Musician's name", role: "Bandleader", note: "Residency, years" }
+    { photo: "", name: "Johnny O\u2019Neal", role: "Piano & vocals",            note: "Smoke Sessions album <em>In the Moment</em>" },
+    { photo: "", name: "Roy Hargrove",       role: "Trumpet",                    note: "Featured on <em>In the Moment</em>" },
+    { photo: "", name: "Sheila Jordan",      role: "Vocals \u00b7 NEA Jazz Master", note: "RBH Jazz Camp, three years" },
+    { photo: "", name: "James Austin Jr.",   role: "Piano",                      note: "Album <em>Songs in the Key of Wonder</em>" },
+    { photo: "", name: "Jerry Dodgion",      role: "Alto saxophone",             note: "Recorded his original compositions" },
+    { photo: "", name: "Hod O\u2019Brien",   role: "Piano",                      note: "80th birthday week, 2016" },
+    { photo: "", name: "Roni Ben-Hur",       role: "Guitar",                     note: "RBH Jazz Camp, Burlington VT" }
   ],
 
   // GALLERY: photos and videos.
@@ -482,9 +650,9 @@ const SITE = {
   ],
 
   facts: [
-    { n: "15+", t: "Years performing jazz" },
-    { n: "NJ · NYC", t: "Home base" },
-    { n: "2–5", t: "Piece groups I lead" }
+    { n: "15+", t: "Years on the bandstand" },
+    { n: "8",   t: "Countries performed in" },
+    { n: "MSM \u00b7 Rutgers", t: "Jazz performance & music education" }
   ],
 
   hireIntro: "Book the band for a room, a series or an event, or call me as the bass player for your group.",
@@ -526,6 +694,9 @@ const SITE = {
     { text: "Add a quote from a venue owner or series presenter who has booked you.", who: "Name, venue or series" }
   ],
 
+  // MARQUEE: the scrolling "stages" sign under the opening section.
+  marquee: ["The Kennedy Center","The Apollo Theater","The Metropolitan Museum of Art","Blue Note Milano","Blue Note Beijing","Nice Jazz Festival","Detroit Jazz Festival","Rochester International Jazz Festival","Brussels Jazz Festival","Gaume Jazz Festival","Red Sea Jazz Festival"],
+
   bookingNote: "Send the date, the room and the format you have in mind. I reply within two days.",
   email: "booking@yourname.com",
   phone: "(000) 000-0000",
@@ -547,7 +718,7 @@ const el = (tag, attrs={}, kids=[]) => {
   return n;
 };
 
-document.querySelectorAll("[data-f]").forEach(n => { n.textContent = SITE[n.dataset.f] ?? ""; });
+document.querySelectorAll("[data-f]").forEach(n => { if (n.dataset.f === "pitch") n.innerHTML = SITE.pitch; else n.textContent = SITE[n.dataset.f] ?? ""; });
 document.title = SITE.name + " · Jazz Bass";
 $("#yr").textContent = new Date().getFullYear();
 
@@ -557,7 +728,7 @@ if (SITE.photo) portrait.append(el("img", { src: SITE.photo, alt: "Portrait of "
 else portrait.append(el("span", { class: "label", text: "Add a photo of you with the bass (4:5 portrait)" }));
 
 /* bio + facts */
-SITE.bio.forEach(p => $("#bio").append(el("p", { text: p })));
+SITE.bio.forEach(p => $("#bio").append(el("p", { html: p })));
 SITE.facts.forEach(f => $("#facts").append(el("div", {}, [el("b", { text: f.n }), el("span", { class: "label", text: f.t })])));
 
 /* played-with wall: the list is rendered twice so the scroll loops seamlessly */
@@ -565,7 +736,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const track = $("#wallTrack");
 const polaroid = (p, dupe) => {
   const pic = el("div", { class: "pic" }, p.photo ? el("img", { src: p.photo, alt: p.name, loading: "lazy" }) : el("div", { class: "ph", text: "Add photo" }));
-  const fig = el("figure", { class: "polaroid" }, [pic, el("figcaption", {}, [el("b", { text: p.name }), el("span", { text: p.role }), el("small", { text: p.note })])]);
+  const fig = el("figure", { class: "polaroid" }, [pic, el("figcaption", {}, [el("b", { text: p.name }), el("span", { text: p.role }), el("small", { html: p.note })])]);
   if (dupe) fig.setAttribute("aria-hidden", "true");
   return fig;
 };
@@ -722,6 +893,49 @@ $("#inquiry").addEventListener("input", refresh);
 $("#inquiry").addEventListener("submit", e => { e.preventDefault(); copyText(out.textContent, $("#q-status"), out); });
 refresh();
 
+
+/* marquee (rendered twice for a seamless loop) */
+const mt = $("#marqueeTrack");
+[false, true].forEach(dupe => SITE.marquee.forEach(v => { const sp = el("span", { text: v }); if (dupe) sp.setAttribute("aria-hidden","true"); mt.append(sp); }));
+
+/* stage haze: slow warm bokeh behind the hero */
+(function(){
+  const c = $("#haze"); if (!c) return;
+  const ctx = c.getContext("2d");
+  const cols = ["255,181,71","255,79,143","63,227,210","255,214,150"];
+  let W=0,H=0,dots=[];
+  const size = () => { const r = c.getBoundingClientRect(); const d = Math.min(devicePixelRatio||1,2); W=r.width; H=r.height; c.width=W*d; c.height=H*d; ctx.setTransform(d,0,0,d,0,0); };
+  const seed = () => { dots = Array.from({length: Math.round(Math.max(14, W/60))}, () => ({ x:Math.random()*W, y:Math.random()*H, r:8+Math.random()*38, vy:-(.08+Math.random()*.25), vx:(Math.random()-.5)*.12, a:.05+Math.random()*.12, c:cols[Math.random()*cols.length|0], p:Math.random()*6.28 })); };
+  const draw = t => {
+    ctx.clearRect(0,0,W,H);
+    for (const d of dots){
+      const tw = .6 + .4*Math.sin(t/1400 + d.p);
+      const g = ctx.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r);
+      g.addColorStop(0,`rgba(${d.c},${d.a*tw})`); g.addColorStop(1,`rgba(${d.c},0)`);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,6.283); ctx.fill();
+    }
+  };
+  const tick = t => {
+    for (const d of dots){ d.y += d.vy; d.x += d.vx; if (d.y < -d.r){ d.y = H + d.r; d.x = Math.random()*W; } }
+    draw(t); requestAnimationFrame(tick);
+  };
+  size(); seed();
+  addEventListener("resize", () => { size(); seed(); });
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) draw(0); else requestAnimationFrame(tick);
+})();
+
+/* notes that float up from a plucked string */
+const NOTES = ["\u266A","\u266B","\u2669","\u266C"];
+function spawnNote(row){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box = $("#strings"), rb = box.getBoundingClientRect(), rr = row.getBoundingClientRect();
+  const n = el("span", { class: "note " + ["","pink","teal"][Math.random()*3|0], text: NOTES[Math.random()*NOTES.length|0], "aria-hidden":"true" });
+  n.style.left = (40 + Math.random()*(rb.width-80)) + "px";
+  n.style.top = (rr.top - rb.top - 10) + "px";
+  n.style.setProperty("--dx", ((Math.random()-.5)*80).toFixed(0) + "px");
+  box.append(n); n.addEventListener("animationend", () => n.remove());
+}
+
 /* strings: G D A E, thinnest to thickest */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const box = $("#strings");
@@ -735,6 +949,7 @@ const box = $("#strings");
   const pluck = () => {
     if (reduce) { row.classList.add("plucked"); setTimeout(() => row.classList.remove("plucked"), 400); return; }
     cancelAnimationFrame(raf);
+    spawnNote(row); if (Math.random() < .5) setTimeout(() => spawnNote(row), 140);
     const t0 = performance.now(), amp = 9 + w * 1.5, freq = 0.055 / w;
     row.classList.add("plucked");
     const step = now => {
