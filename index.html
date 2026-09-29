@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ben Rubens · Jazz Bassist</title>
+<title>Ben Rubens · Jazz Bass</title>
 <meta name="description" content="Ben Rubens, NJ/NYC jazz bassist. Featured on the Johnny O’Neal Trio album In the Moment with Roy Hargrove; performances at the Kennedy Center, the Apollo and Blue Note Milano.">
 <meta name="theme-color" content="#170E13">
 <meta property="og:title" content="Ben Rubens · Jazz Bass">
@@ -102,7 +102,14 @@
   .string svg{width:100%;height:30px;display:block;overflow:visible}
   .string path{fill:none;stroke:var(--ink);stroke-linecap:round}
   .string:hover path,.string.plucked path{stroke:var(--brass)}
-  .strings .hint{position:absolute;right:0;bottom:-26px}
+  .string-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .sound-toggle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--ink-soft);cursor:pointer}
+  .sound-toggle svg{width:18px;height:18px;fill:currentColor;stroke:currentColor}
+  .sound-toggle .waves{opacity:.35}
+  .sound-toggle:hover{border-color:var(--brass);color:var(--ink)}
+  .sound-toggle[aria-pressed="true"]{border-color:var(--brass);color:var(--brass);box-shadow:0 0 14px rgba(255,181,71,.35)}
+  .sound-toggle[aria-pressed="true"] .waves{opacity:1}
 
   /* ---------- sections ---------- */
   section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
@@ -152,11 +159,6 @@
   .tracks .play svg{width:14px;height:14px;fill:var(--ink);margin-left:3px}
   .tracks small{display:block;color:var(--ink-soft);font-size:.9rem}
   .tracks .src{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
-  .setlist{font-family:var(--serif);margin:0;padding:0;list-style:none;counter-reset:tune}
-  .setlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding-block:10px;border-bottom:1px dotted var(--rule)}
-  .setlist em{font-style:italic;font-weight:600}
-  .setlist .by{display:block;color:var(--ink-soft);font-size:.9rem}
-  .setlist .key{font-family:var(--mono);font-size:.78rem;color:var(--brass);white-space:nowrap;align-self:center;font-variant-numeric:tabular-nums}
 
   /* quotes */
   .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,48px)}
@@ -374,7 +376,7 @@
     background:linear-gradient(90deg,var(--oxblood),var(--brass));box-shadow:0 0 12px rgba(255,79,143,.6)}
   .label{color:var(--ink-soft)}
   .bio p:first-child::first-letter{color:var(--brass);text-shadow:var(--glow-amber)}
-  .bio em,.setlist em{color:#FFD9A0}
+  .bio em{color:#FFD9A0}
 
   /* portrait framed like a lit stage photo */
   .portrait{border:0;box-shadow:0 0 0 1px var(--rule), 0 30px 60px -25px rgba(255,79,143,.45), -20px -20px 60px -30px rgba(255,181,71,.5)}
@@ -420,7 +422,6 @@
   .tracks .play{border-color:var(--brass)}
   .tracks .play svg{fill:var(--brass)}
   .tracks a:hover .play{box-shadow:var(--glow-amber)}
-  .setlist .key{color:var(--teal)}
 
   blockquote{color:var(--ink)}
   blockquote::before{content:"\201C";display:block;font-family:var(--script);font-size:3.4rem;line-height:.6;color:var(--oxblood);text-shadow:var(--glow-pink);margin-bottom:6px}
@@ -442,6 +443,107 @@
     .marquee-track{flex-wrap:wrap;width:auto;justify-content:center}
     .marquee-track span[aria-hidden="true"]{display:none}
   }
+
+  /* ---------- "Played with" spotlight book ---------- */
+  .spot{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:stretch}
+  .spot-stage{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:14px;overflow:hidden;background:#0F080C;
+    box-shadow:0 0 0 1px var(--rule), 0 30px 70px -30px rgba(255,79,143,.55), -24px -18px 70px -40px rgba(255,181,71,.6)}
+  .slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;clip-path:inset(0 0 0 100%);
+    transition:clip-path .9s cubic-bezier(.7,0,.2,1), opacity .9s, visibility 0s .9s}
+  .slide.on{opacity:1;visibility:visible;clip-path:inset(0 0 0 0);z-index:2;transition:clip-path .9s cubic-bezier(.7,0,.2,1), opacity .2s, visibility 0s}
+  .slide.off{opacity:1;visibility:visible;z-index:1;clip-path:inset(0 0 0 0);transition:none}
+  .slide-pic{position:absolute;inset:0}
+  .slide-pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide.on .slide-pic{animation:kenburns 7s ease-out both}
+  @keyframes kenburns{from{transform:scale(1.14) translate(1.5%,1%)}to{transform:scale(1) translate(0,0)}}
+  .mono{position:absolute;inset:0;display:grid;place-items:center;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,181,71,.35), transparent 55%),
+      radial-gradient(circle at 80% 85%, rgba(255,79,143,.35), transparent 55%),
+      repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.03) 14px 15px), #1D1117}
+  .mono b{font-family:var(--display);font-weight:900;font-size:clamp(5rem,14vw,10rem);line-height:1;color:transparent;
+    -webkit-text-stroke:2px rgba(255,236,214,.55);letter-spacing:.02em}
+  .addtag{position:absolute;z-index:3;top:12px;right:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,236,214,.6);border:1px solid rgba(255,236,214,.25);padding:4px 8px;border-radius:999px}
+  .slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,3vw,28px);
+    background:linear-gradient(transparent, rgba(12,6,9,.92) 70%);color:#FBEFE2}
+  .slide figcaption .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+  .slide figcaption h4{margin:.15em 0 .1em;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.9;
+    font-size:clamp(2.2rem,5.4vw,4.2rem);text-shadow:0 0 22px rgba(255,79,143,.45)}
+  .slide figcaption p{margin:0;color:#E6D2C0;font-size:1rem}
+  .slide figcaption p em{color:var(--brass)}
+  .slide.on figcaption > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .slide.on figcaption h4{animation-delay:.15s}
+  .slide.on figcaption p{animation-delay:.28s}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .counter{position:absolute;top:14px;left:16px;z-index:3;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:rgba(255,236,214,.8);font-variant-numeric:tabular-nums}
+
+  .spot-index{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;justify-content:center;gap:2px}
+  .spot-index button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;width:100%;
+    padding:12px 14px;border-radius:10px;color:var(--ink-soft);transition:background .25s,color .25s}
+  .spot-index button:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+  .spot-index button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+  .spot-index .n{font-family:var(--display);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.01em;line-height:1.05}
+  .spot-index .r{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;align-self:center;opacity:.8}
+  .spot-index .bar{grid-column:1 / -1;height:2px;background:var(--rule);border-radius:2px;overflow:hidden}
+  .spot-index .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--oxblood),var(--brass));box-shadow:0 0 8px rgba(255,79,143,.7)}
+  .spot-index [aria-current="true"]{background:rgba(255,181,71,.07);color:var(--ink)}
+  .spot-index [aria-current="true"] .n{color:var(--brass);text-shadow:var(--glow-amber)}
+
+  @media (max-width:820px){
+    .spot{grid-template-columns:minmax(0,1fr)}
+    .spot-index{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:6px;scroll-snap-type:x mandatory}
+    .spot-index{position:relative;justify-content:flex-start}
+    .spot-index li{flex:none;width:190px;scroll-snap-align:start}
+    .spot-index button{grid-template-columns:minmax(0,1fr)}
+    .spot-index .n{font-size:1.15rem}
+  }
+  @media (max-width:520px){ .spot-stage{aspect-ratio:4/5} }
+  @media (prefers-reduced-motion: reduce){
+    .slide,.slide.on{transition:none;clip-path:none}
+    .slide.on .slide-pic,.slide.on figcaption > *{animation:none}
+  }
+
+  /* featured YouTube preview */
+  .yt-card{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(16px,3vw,28px);align-items:center;
+    text-decoration:none;margin-bottom:24px;padding:12px;border-radius:14px;background:var(--panel);border:1px solid var(--rule);transition:box-shadow .25s,border-color .25s}
+  .yt-card:hover{border-color:var(--oxblood);box-shadow:0 18px 40px -18px rgba(255,79,143,.55)}
+  .yt-thumb{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:#0F080C}
+  .yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .yt-card:hover .yt-thumb img{transform:scale(1.04)}
+  .yt-fallback{position:absolute;inset:0;display:grid;align-content:end;justify-content:start;gap:4px;padding:16px;text-align:left;
+    background:radial-gradient(circle at 30% 30%, rgba(255,181,71,.3), transparent 60%), radial-gradient(circle at 75% 80%, rgba(255,79,143,.35), transparent 60%), #1D1117}
+  .yt-fallback span{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .yt-fallback b{font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);text-transform:uppercase;color:var(--ink)}
+  .yt-play{position:absolute;left:50%;top:50%;width:64px;height:64px;transform:translate(-50%,-50%);filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
+  .yt-play svg{width:100%;height:100%}
+  .yt-play .bg{fill:var(--brass);opacity:.95;transition:fill .2s}
+  .yt-card:hover .yt-play .bg{fill:var(--oxblood)}
+  .yt-meta{display:grid;gap:6px}
+  .yt-meta b{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;line-height:1;color:var(--ink)}
+  .yt-meta > span:last-child{color:var(--ink-soft)}
+  @media (max-width:620px){ .yt-card{grid-template-columns:minmax(0,1fr)} }
+
+  /* social row under the name */
+  .follow-label{margin:clamp(22px,3vw,34px) 0 10px;font-family:var(--script);font-size:1.6rem;line-height:1;color:var(--oxblood);text-shadow:var(--glow-pink);
+    animation:rise .6s cubic-bezier(.2,.7,.2,1) 1.3s both}
+  .socials{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:10px}
+  @media (max-width:360px){ .socials{grid-template-columns:minmax(0,1fr)} }
+  .social{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:999px;text-decoration:none;
+    background:rgba(36,21,28,.75);border:1px solid var(--rule);color:var(--ink);backdrop-filter:blur(4px);
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+    animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(1.4s + var(--i) * .12s)}
+  .social .ico{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--oxblood),var(--brass));box-shadow:0 0 14px rgba(255,79,143,.4)}
+  .social svg{width:19px;height:19px;fill:none;stroke:#1A0F14;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .social svg .fill{fill:#1A0F14}
+  .social .txt{display:grid;line-height:1.15}
+  .social b{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .social small{font-size:.82rem;color:var(--ink-soft)}
+  .social:hover{transform:translateY(-2px);border-color:var(--brass);box-shadow:0 10px 24px -10px rgba(255,181,71,.6)}
+  .social:nth-child(2) .ico{background:linear-gradient(135deg,var(--teal),#7AB8FF)}
+  .social:nth-child(3) .ico{background:linear-gradient(135deg,#FF6A4F,var(--oxblood))}
+  .social:nth-child(4) .ico{background:linear-gradient(135deg,var(--brass),#FF8A3D)}
+  @media (prefers-reduced-motion: reduce){ .social,.follow-label{animation:none} }
 </style>
 </head>
 <body>
@@ -464,6 +566,8 @@
     <div>
       <p class="label" data-f="region"></p>
       <h1><span data-f="name"></span><span class="instr" data-f="instrument"></span></h1>
+      <p class="follow-label" id="followLabel">Follow and Subscribe</p>
+      <nav class="socials" id="heroSocial" aria-labelledby="followLabel"></nav>
     </div>
     <div>
       <p class="pitch" data-f="pitch"></p>
@@ -476,7 +580,13 @@
 
   <div class="strings" id="strings" aria-label="Bass strings. Hover or tap to pluck.">
     <!-- filled by script: G D A E, highest to lowest, as on a bass seen from the player's side -->
-    <span class="label hint">Hover or tap a string</span>
+    <div class="string-foot">
+      <button class="sound-toggle" type="button" id="soundToggle" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="waves" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke-width="2" stroke-linecap="round"/></svg>
+        <span id="soundLabel">Turn on sound</span>
+      </button>
+      <span class="label hint">Then hover or tap a string: open G, D, A and E</span>
+    </div>
   </div>
   </div>
 </div>
@@ -504,8 +614,9 @@
         </div>
         <button class="copy" type="button" id="wallToggle" aria-pressed="false">Pause</button>
       </div>
-      <div class="wall-view" tabindex="0" aria-label="Photos of musicians I have played with. Hover or focus to pause.">
-        <div class="wall-track" id="wallTrack"></div>
+      <div class="spot" id="spot" aria-roledescription="carousel" aria-label="Musicians I have played with">
+        <div class="spot-stage" id="spotStage" aria-live="polite"></div>
+        <ol class="spot-index" id="spotIndex"></ol>
       </div>
     </div>
   </section>
@@ -540,17 +651,8 @@
   </section>
 
   <section id="listen">
-    <div class="two">
-      <div>
-        <div class="listen-head" style="margin-bottom:20px"><div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin:0"><h2>Listen</h2></div><div class="vinyl" aria-hidden="true"></div></div>
-        <ul class="tracks" id="tracks"></ul>
-      </div>
-      <div>
-        <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>From the book</h2></div>
-        <p class="label" style="margin-top:0">A sample of tunes I call, with the key I usually take them in</p>
-        <ul class="setlist" id="setlist"></ul>
-      </div>
-    </div>
+    <div class="listen-head" style="margin-bottom:20px"><div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin:0"><h2>Listen</h2></div><div class="vinyl" aria-hidden="true"></div></div>
+    <ul class="tracks" id="tracks"></ul>
   </section>
 
   <section id="words">
@@ -604,8 +706,8 @@
    ================================================================= */
 const SITE = {
   name: "Ben Rubens",
-  instrument: "Upright & electric bass",
-  region: "New Jersey / New York City",
+  instrument: "Upright bass",
+  region: "Springfield, NJ · New Jersey / New York City",
   pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
 
   // Photo: put a URL or a data: URI here. Leave empty to show the placeholder box.
@@ -660,7 +762,6 @@ const SITE = {
     { title: "Trio",              text: "Piano or guitar, bass and drums. The standard club and restaurant setup, sized for dinner rooms.", meta: "2–3 sets · acoustic-friendly" },
     { title: "Quartet",           text: "Trio plus saxophone, trumpet or vocals for a fuller sound at clubs, festivals and concerts.",      meta: "2–3 sets · small PA" },
     { title: "Library concert",   text: "A one-hour program that plays the music and briefly explains how a jazz band works together.",     meta: "60 min · all ages" },
-    { title: "Jam session host",  text: "I bring the house band and run the list so the night stays musical for players and the room.",      meta: "Weekly or monthly" },
     { title: "Sideman",           text: "Reads charts, knows the book, arrives early. Upright or electric as the gig needs.",               meta: "Rehearsals · recording · live" }
   ],
 
@@ -671,22 +772,15 @@ const SITE = {
     { date: "2026-12-05", time: "8:00 PM",       title: "Guest with a quartet", where: "Jazz club · Morris County, NJ",          tag: "Sideman",  sample: true }
   ],
 
-  // Listen: link to your own recordings (Bandcamp, SoundCloud, YouTube). Embeds are not used; each item opens in a new tab.
+  // Listen: links to your YouTube and SoundCloud profiles. Each item opens in a new tab.
+  // FEATURED VIDEO: the preview thumbnail above the links. "id" is the 11 characters after
+  // watch?v= in a YouTube address. Change it to feature a different video.
+  featuredVideo: { id: "ysRE9R3Oxko", title: "Exploring Jazz Standards", with: "Ben Rubens and Ryan Hernandez" },
   tracks: [
-    { title: "Trio, live set", note: "Add a clip that shows your time and sound", src: "YouTube",    url: "https://www.youtube.com/" },
-    { title: "Quartet, studio", note: "Add a recording with a solo or a feature",  src: "Bandcamp",   url: "https://bandcamp.com/" },
-    { title: "Duo, bass and voice", note: "Add something intimate for private events", src: "SoundCloud", url: "https://soundcloud.com/" }
+    { title: "Watch on YouTube",   note: "Live performances and videos", src: "YouTube",    url: "https://www.youtube.com/@benrubensbass" },
+    { title: "Listen on SoundCloud", note: "Recordings and tracks",       src: "SoundCloud", url: "https://soundcloud.com/benrubensbass" }
   ],
 
-  // Repertoire: full title (shown in italics) plus the full names of the composers and lyricists.
-  setlist: [
-    { title: "Autumn Leaves",           by: "Joseph Kosma, lyrics by Johnny Mercer",           key: "G minor" },
-    { title: "All the Things You Are",  by: "Jerome Kern, lyrics by Oscar Hammerstein II",     key: "A♭ major" },
-    { title: "Blue Bossa",              by: "Kenny Dorham",                                     key: "C minor" },
-    { title: "Stolen Moments",          by: "Oliver Nelson",                                    key: "C minor" },
-    { title: "Mr. P.C.",                by: "John Coltrane",                                    key: "C minor" },
-    { title: "Days of Wine and Roses",  by: "Henry Mancini, lyrics by Johnny Mercer",          key: "F major" }
-  ],
 
   // Quotes: use only real quotes you have permission to share. Until then the placeholders say what to add.
   quotes: [
@@ -695,15 +789,22 @@ const SITE = {
   ],
 
   // MARQUEE: the scrolling "stages" sign under the opening section.
+  // STRING SOUNDS: leave "" to use the built-in plucked-bass sound.
+  // To use recordings of your own bass, add short audio files (mp3 or wav) of each open string,
+  // e.g. "sounds/open-g.mp3", and the site plays those instead.
+  stringSounds: { G: "", D: "", A: "", E: "" },
+
   marquee: ["The Kennedy Center","The Apollo Theater","The Metropolitan Museum of Art","Blue Note Milano","Blue Note Beijing","Nice Jazz Festival","Detroit Jazz Festival","Rochester International Jazz Festival","Brussels Jazz Festival","Gaume Jazz Festival","Red Sea Jazz Festival"],
 
   bookingNote: "Send the date, the room and the format you have in mind. I reply within two days.",
   email: "booking@yourname.com",
   phone: "(000) 000-0000",
+  // SOCIAL: shown under your name at the top and in the footer.
   social: [
-    { label: "Instagram", url: "https://instagram.com/" },
-    { label: "YouTube",   url: "https://youtube.com/" },
-    { label: "Bandcamp",  url: "https://bandcamp.com/" }
+    { label: "Instagram",  icon: "instagram",  handle: "@ben_rubens_bass", url: "https://www.instagram.com/ben_rubens_bass/" },
+    { label: "Facebook",   icon: "facebook",   handle: "Ben Rubens",       url: "https://www.facebook.com/" },
+    { label: "YouTube",    icon: "youtube",    handle: "@benrubensbass",   url: "https://www.youtube.com/@benrubensbass" },
+    { label: "SoundCloud", icon: "soundcloud", handle: "benrubensbass",    url: "https://soundcloud.com/benrubensbass" }
   ]
 };
 /* ================================================================= */
@@ -731,25 +832,57 @@ else portrait.append(el("span", { class: "label", text: "Add a photo of you with
 SITE.bio.forEach(p => $("#bio").append(el("p", { html: p })));
 SITE.facts.forEach(f => $("#facts").append(el("div", {}, [el("b", { text: f.n }), el("span", { class: "label", text: f.t })])));
 
-/* played-with wall: the list is rendered twice so the scroll loops seamlessly */
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const track = $("#wallTrack");
-const polaroid = (p, dupe) => {
-  const pic = el("div", { class: "pic" }, p.photo ? el("img", { src: p.photo, alt: p.name, loading: "lazy" }) : el("div", { class: "ph", text: "Add photo" }));
-  const fig = el("figure", { class: "polaroid" }, [pic, el("figcaption", {}, [el("b", { text: p.name }), el("span", { text: p.role }), el("small", { html: p.note })])]);
-  if (dupe) fig.setAttribute("aria-hidden", "true");
-  return fig;
-};
-SITE.playedWith.forEach(p => track.append(polaroid(p, false)));
-SITE.playedWith.forEach(p => track.append(polaroid(p, true)));
-track.style.setProperty("--wall-dur", Math.max(24, SITE.playedWith.length * 7) + "s");
-const wallBtn = $("#wallToggle");
-if (reduceMotion) wallBtn.hidden = true;
-wallBtn.addEventListener("click", () => {
-  const paused = $("#wall").classList.toggle("paused");
-  wallBtn.setAttribute("aria-pressed", String(paused));
-  wallBtn.textContent = paused ? "Play" : "Pause";
-});
+/* played-with: spotlight book that turns its own pages */
+(function(){
+  const people = SITE.playedWith, stage = $("#spotStage"), index = $("#spotIndex"), wallEl = $("#wall");
+  if (!people.length) { wallEl.hidden = true; return; }
+  const DUR = 5500, reduceM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const initials = n => n.replace(/[^A-Za-z\s.-]/g,"").split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0]).join("").toUpperCase();
+  const counter = el("div", { class: "counter", "aria-hidden": "true" }); stage.append(counter);
+  const slides = people.map((p, i) => {
+    const pic = el("div", { class: "slide-pic" }, p.photo
+      ? el("img", { src: p.photo, alt: p.name, loading: i ? "lazy" : "eager" })
+      : el("div", { class: "mono" }, el("b", { text: initials(p.name) })));
+    const fig = el("figure", { class: "slide", "aria-hidden": "true" }, [pic, p.photo ? null : el("small", { class: "addtag", text: "Add photo" }), el("figcaption", {}, [
+      el("span", { class: "role", text: p.role }), el("h4", { text: p.name }), el("p", { html: p.note })
+    ])]);
+    stage.append(fig);
+    const btn = el("button", { type: "button", "aria-label": p.name + ", " + p.role }, [
+      el("span", { class: "n", text: p.name }), el("span", { class: "r", text: p.role }), el("span", { class: "bar" }, el("i"))
+    ]);
+    btn.addEventListener("click", () => { go(i); t0 = performance.now(); elapsed = 0; });
+    index.append(el("li", {}, btn));
+    return { fig, btn, bar: btn.querySelector(".bar i") };
+  });
+  let cur = -1, t0 = performance.now(), elapsed = 0, paused = reduceM, hover = false;
+  function go(i){
+    if (i === cur) return;
+    slides.forEach((s, k) => { s.fig.classList.remove("off"); if (k !== i && k !== cur) s.fig.classList.remove("on"); s.bar.style.width = "0"; });
+    if (cur >= 0){ const o = slides[cur]; o.fig.classList.remove("on"); o.fig.classList.add("off"); o.fig.setAttribute("aria-hidden","true"); o.btn.removeAttribute("aria-current"); }
+    const n = slides[i]; void n.fig.offsetWidth; n.fig.classList.add("on"); n.fig.removeAttribute("aria-hidden"); n.btn.setAttribute("aria-current","true");
+    const prev = cur; cur = i;
+    if (prev >= 0) setTimeout(() => { if (cur !== prev) slides[prev].fig.classList.remove("off"); }, 950);
+    counter.textContent = String(i + 1).padStart(2,"0") + " / " + String(slides.length).padStart(2,"0");
+    if (matchMedia("(max-width:820px)").matches){ const li = n.btn.parentElement; index.scrollTo({ left: li.offsetLeft, behavior: reduceM ? "auto" : "smooth" }); }
+  }
+  function frame(now){
+    const running = !paused && !hover;
+    if (running) elapsed += now - t0;
+    t0 = now;
+    if (slides[cur]) slides[cur].bar.style.width = Math.min(100, elapsed / DUR * 100) + "%";
+    if (elapsed >= DUR){ elapsed = 0; go((cur + 1) % slides.length); }
+    requestAnimationFrame(frame);
+  }
+  go(0); requestAnimationFrame(frame);
+  $("#spot").addEventListener("mouseenter", () => hover = true);
+  $("#spot").addEventListener("mouseleave", () => hover = false);
+  $("#spot").addEventListener("focusin", () => hover = true);
+  $("#spot").addEventListener("focusout", () => hover = false);
+  const btn = $("#wallToggle");
+  const sync = () => { btn.textContent = paused ? "Play" : "Pause"; btn.setAttribute("aria-pressed", String(paused)); };
+  btn.addEventListener("click", () => { paused = !paused; sync(); });
+  sync();
+})();
 
 /* gallery */
 const grid = $("#galleryGrid");
@@ -838,6 +971,23 @@ SITE.dates.forEach(d => {
   ]));
 });
 
+/* featured YouTube preview */
+if (SITE.featuredVideo && SITE.featuredVideo.id){
+  const v = SITE.featuredVideo, watch = "https://www.youtube.com/watch?v=" + v.id;
+  const img = el("img", { src: "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg", alt: "", loading: "lazy" });
+  const fallback = el("div", { class: "yt-fallback", "aria-hidden": "true" }, [el("span", { text: "YouTube" }), el("b", { text: "@benrubensbass" })]);
+  img.addEventListener("error", () => { img.remove(); });
+  const card = el("a", { class: "yt-card", href: watch, target: "_blank", rel: "noopener", "aria-label": "Watch " + v.title + " on YouTube" }, [
+    el("div", { class: "yt-thumb" }, [fallback, img, el("span", { class: "yt-play", html: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="30"/><path d="M26 20 46 32 26 44z" fill="#1A0F14"/></svg>' })]),
+    el("div", { class: "yt-meta" }, [
+      el("span", { class: "label", text: "Featured video" }),
+      el("b", { html: "\u201C" + v.title + "\u201D" }),
+      el("span", { text: v.with })
+    ])
+  ]);
+  $("#tracks").before(card);
+}
+
 /* tracks */
 const playIcon = '<svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z"/></svg>';
 SITE.tracks.forEach(t => $("#tracks").append(el("li", {}, [
@@ -848,11 +998,6 @@ SITE.tracks.forEach(t => $("#tracks").append(el("li", {}, [
   ])
 ])));
 
-/* setlist */
-SITE.setlist.forEach(s => $("#setlist").append(el("li", {}, [
-  el("span", {}, [el("em", { text: s.title }), el("span", { class: "by", text: s.by })]),
-  el("span", { class: "key", text: s.key })
-])));
 
 /* quotes */
 SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
@@ -863,6 +1008,22 @@ SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
 /* contact */
 $("#email").textContent = SITE.email;
 $("#phone").textContent = SITE.phone;
+
+/* social links under the name: simple generic icons, not company logos */
+const SOCIAL_ICONS = {
+  instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.6"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>',
+  facebook:  '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.3c.5-.2 1-.3 1.5-.3 2.5 0 4 1.9 4 4.6"/></svg>',
+  youtube:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="13" rx="2.5"/><path d="M10 9l5 2.5-5 2.5z" class="fill"/><path d="M8 21h8"/></svg>',
+  soundcloud:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10.5a3.5 3.5 0 0 0 .4-7A5.5 5.5 0 0 0 7.3 9.6 4.2 4.2 0 0 0 7 18z"/><path d="M9 13.5v2M11.5 12.5v3M14 13v2.5"/></svg>'
+};
+SITE.social.forEach((sc, i) => {
+  const a = el("a", { class: "social", href: sc.url, target: "_blank", rel: "noopener", "aria-label": sc.label + " " + sc.handle, style: "--i:" + i }, [
+    el("span", { class: "ico", html: SOCIAL_ICONS[sc.icon] || "" }),
+    el("span", { class: "txt" }, [el("b", { text: sc.label }), el("small", { text: sc.handle })])
+  ]);
+  $("#heroSocial").append(a);
+});
+
 SITE.social.forEach(s => $("#social").append(el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.label })));
 
 async function copyText(text, statusEl, sourceEl){
@@ -937,16 +1098,92 @@ function spawnNote(row){
 }
 
 /* strings: G D A E, thinnest to thickest */
+
+/* ---------- string sounds ----------
+   Open strings of a double bass, standard tuning (sounds an octave below written):
+   G2 98.00 Hz, D2 73.42 Hz, A1 55.00 Hz, E1 41.20 Hz.
+   Browsers only allow sound after the visitor clicks or taps, so sound starts
+   with the button or a tap on a string; after that, hovering plays too. */
+const STRING_HZ = { G: 98.00, D: 73.42, A: 55.00, E: 41.20 };
+let actx = null, soundOn = false;
+const buffers = {}, voices = {};
+
+function synthPluck(freq){
+  // Karplus-Strong plucked string with a soft, finger-style attack
+  const sr = actx.sampleRate, len = Math.floor(sr * 2.8), N = Math.round(sr / freq);
+  const out = new Float32Array(len);
+  let lp = 0;
+  for (let i = 0; i < len; i++){
+    let x = 0;
+    if (i < N){ const n = Math.random() * 2 - 1; lp += 0.28 * (n - lp); x = lp * (1 - i / N * 0.3); }
+    const a = i >= N ? out[i - N] : 0, b = i > N ? out[i - N - 1] : 0;
+    out[i] = x + 0.9945 * 0.5 * (a + b) * 1.0;
+  }
+  // thump of the finger against the fingerboard, then normalize
+  const thumpLen = Math.floor(sr * 0.03);
+  for (let i = 0; i < thumpLen; i++) out[i] += 0.35 * Math.sin(2 * Math.PI * freq * 2 * i / sr) * (1 - i / thumpLen);
+  let peak = 0; for (let i = 0; i < len; i++) peak = Math.max(peak, Math.abs(out[i]));
+  const fade = Math.floor(sr * 0.4);
+  for (let i = 0; i < len; i++){ out[i] = out[i] / peak * 0.9; if (i > len - fade) out[i] *= (len - i) / fade; }
+  const buf = actx.createBuffer(1, len, sr); buf.copyToChannel(out, 0);
+  // the loop's true period is N + 0.5 samples; this playback rate lands exactly on pitch
+  buf.tuneRate = (N + 0.5) / (sr / freq);
+  return buf;
+}
+
+async function loadString(name){
+  const url = SITE.stringSounds && SITE.stringSounds[name];
+  if (url){
+    try { const r = await fetch(url); buffers[name] = await actx.decodeAudioData(await r.arrayBuffer()); return; }
+    catch(e){ /* fall back to the built-in sound */ }
+  }
+  buffers[name] = synthPluck(STRING_HZ[name]);
+}
+
+async function enableSound(){
+  if (!actx){
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    actx = new AC();
+    await Promise.all(Object.keys(STRING_HZ).map(loadString));
+  }
+  if (actx.state === "suspended") { try { await actx.resume(); } catch(e){} }
+  soundOn = true; updateSoundButton(); return true;
+}
+function updateSoundButton(){
+  const b = $("#soundToggle"); if (!b) return;
+  b.setAttribute("aria-pressed", String(soundOn));
+  $("#soundLabel").textContent = soundOn ? "Sound on" : "Turn on sound";
+}
+function playString(name){
+  if (!soundOn || !actx || !buffers[name]) return;
+  const now = actx.currentTime;
+  if (voices[name]){ const v = voices[name]; v.g.gain.setTargetAtTime(0, now, 0.02); v.s.stop(now + 0.1); }
+  const s = actx.createBufferSource(); s.buffer = buffers[name];
+  if (buffers[name].tuneRate) s.playbackRate.value = buffers[name].tuneRate;
+  const tone = actx.createBiquadFilter(); tone.type = "lowpass"; tone.frequency.value = 2200;
+  const body = actx.createBiquadFilter(); body.type = "peaking"; body.frequency.value = 180; body.gain.value = 5; body.Q.value = 0.8;
+  const g = actx.createGain(); g.gain.value = 0.85;
+  s.connect(tone).connect(body).connect(g).connect(actx.destination);
+  s.start(now); voices[name] = { s, g };
+  s.onended = () => { if (voices[name] && voices[name].s === s) delete voices[name]; };
+}
+$("#soundToggle").addEventListener("click", async () => {
+  if (soundOn){ soundOn = false; updateSoundButton(); return; }
+  await enableSound();
+});
+
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const box = $("#strings");
 [["G",1.2],["D",1.8],["A",2.5],["E",3.3]].forEach(([name, w]) => {
   const row = el("div", { class: "string", role: "button", tabindex: "0", "aria-label": "Pluck the " + name + " string" });
   row.append(el("span", { text: name }));
   row.insertAdjacentHTML("beforeend", `<svg viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 L1000 15" stroke-width="${w}" vector-effect="non-scaling-stroke"/></svg>`);
-  box.insertBefore(row, box.querySelector(".hint"));
+  box.insertBefore(row, box.querySelector(".string-foot"));
   const path = row.querySelector("path");
   let raf = 0;
   const pluck = () => {
+    playString(name);
     if (reduce) { row.classList.add("plucked"); setTimeout(() => row.classList.remove("plucked"), 400); return; }
     cancelAnimationFrame(raf);
     spawnNote(row); if (Math.random() < .5) setTimeout(() => spawnNote(row), 140);
@@ -962,8 +1199,8 @@ const box = $("#strings");
     raf = requestAnimationFrame(step);
   };
   row.addEventListener("mouseenter", pluck);
-  row.addEventListener("click", pluck);
-  row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pluck(); } });
+  row.addEventListener("click", async () => { if (!soundOn) await enableSound(); pluck(); });
+  row.addEventListener("keydown", async e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!soundOn) await enableSound(); pluck(); } });
 });
 </script>
 </body>
