@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ben Rubens · Jazz Bassist</title>
+<title>Ben Rubens · Jazz Bass</title>
 <meta name="description" content="Ben Rubens, NJ/NYC jazz bassist. Featured on the Johnny O’Neal Trio album In the Moment with Roy Hargrove; performances at the Kennedy Center, the Apollo and Blue Note Milano.">
 <meta name="theme-color" content="#170E13">
 <meta property="og:title" content="Ben Rubens · Jazz Bass">
@@ -161,7 +161,8 @@
   .tracks .src{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
 
   /* quotes */
-  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,48px)}
+  .quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,28px)}
+  @media (max-width:700px){ .quotes{grid-template-columns:minmax(0,1fr)} }
   blockquote{margin:0;font-size:1.25rem;line-height:1.45;font-style:italic}
   blockquote footer{margin-top:12px;font-style:normal}
 
@@ -453,7 +454,7 @@
   .slide.on{opacity:1;visibility:visible;clip-path:inset(0 0 0 0);z-index:2;transition:clip-path .9s cubic-bezier(.7,0,.2,1), opacity .2s, visibility 0s}
   .slide.off{opacity:1;visibility:visible;z-index:1;clip-path:inset(0 0 0 0);transition:none}
   .slide-pic{position:absolute;inset:0}
-  .slide-pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide-pic img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9) contrast(1.05) saturate(1.05)}
   .slide.on .slide-pic{animation:kenburns 7s ease-out both}
   @keyframes kenburns{from{transform:scale(1.14) translate(1.5%,1%)}to{transform:scale(1) translate(0,0)}}
   .mono{position:absolute;inset:0;display:grid;place-items:center;
@@ -463,9 +464,9 @@
       repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.03) 14px 15px), #1D1117}
   .mono b{font-family:var(--display);font-weight:900;font-size:clamp(5rem,14vw,10rem);line-height:1;color:transparent;
     -webkit-text-stroke:2px rgba(255,236,214,.55);letter-spacing:.02em}
-  .addtag{position:absolute;z-index:3;top:12px;right:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,236,214,.6);border:1px solid rgba(255,236,214,.25);padding:4px 8px;border-radius:999px}
+  .addtag{position:absolute;z-index:3;top:12px;right:14px;background:rgba(12,6,9,.5);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,236,214,.6);border:1px solid rgba(255,236,214,.25);padding:4px 8px;border-radius:999px}
   .slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,3vw,28px);
-    background:linear-gradient(transparent, rgba(12,6,9,.92) 70%);color:#FBEFE2}
+    background:linear-gradient(transparent, rgba(12,6,9,.6) 28%, rgba(12,6,9,.94) 72%);color:#FBEFE2;padding-top:clamp(48px,8vw,90px)}
   .slide figcaption .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
   .slide figcaption h4{margin:.15em 0 .1em;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.9;
     font-size:clamp(2.2rem,5.4vw,4.2rem);text-shadow:0 0 22px rgba(255,79,143,.45)}
@@ -475,7 +476,7 @@
   .slide.on figcaption h4{animation-delay:.15s}
   .slide.on figcaption p{animation-delay:.28s}
   @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .counter{position:absolute;top:14px;left:16px;z-index:3;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:rgba(255,236,214,.8);font-variant-numeric:tabular-nums}
+  .counter{position:absolute;top:12px;left:14px;z-index:3;padding:4px 10px;border-radius:999px;background:rgba(12,6,9,.6);backdrop-filter:blur(4px);font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:rgba(255,236,214,.8);font-variant-numeric:tabular-nums}
 
   .spot-index{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;justify-content:center;gap:2px}
   .spot-index button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;width:100%;
@@ -571,6 +572,15 @@
     .photo-credit{position:static;grid-row:3;justify-self:end}
   }
   @media (prefers-reduced-motion: reduce){ .hero-photo{animation:none} }
+
+  /* quotes */
+  .quotes blockquote{margin:0;padding:clamp(20px,3vw,32px);border-radius:14px;background:var(--panel);border:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:18px;font-style:normal;transition:border-color .25s, box-shadow .25s, transform .25s}
+  .quotes blockquote:hover{border-color:var(--oxblood);box-shadow:0 18px 40px -20px rgba(255,79,143,.55);transform:translateY(-2px)}
+  .quotes blockquote p{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.35;color:var(--ink);text-wrap:balance}
+  .quotes blockquote footer{margin-top:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding-top:14px;border-top:1px solid var(--rule)}
+  .quotes blockquote footer b{font-family:var(--display);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em;color:var(--brass)}
+  .quotes blockquote footer span{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -687,7 +697,7 @@
   <section id="words">
     <div class="sec-head">
       <h2>Said about the playing</h2>
-      <p>Short quotes from bandleaders and presenters.</p>
+      <p>In the words of the musicians Ben plays with.</p>
     </div>
     <div class="quotes" id="quotes"></div>
   </section>
@@ -735,9 +745,9 @@
    ================================================================= */
 const SITE = {
   name: "Ben Rubens",
-  instrument: "Upright Bass",
-  region: "New Jersey / New York City",
-  pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo Theatre to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
+  instrument: "Upright bass",
+  region: "Springfield, NJ · New Jersey / New York City",
+  pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
 
   // Photo: put a URL or a data: URI here. Leave empty to show the placeholder box.
   photo: "ben-rubens.jpg",
@@ -756,6 +766,7 @@ const SITE = {
   // photo: an image URL (or data: URI). Leave "" to show a placeholder.
   // Add as many as you like; the wall scrolls on its own and pauses on hover.
   playedWith: [
+    { photo: "images/with-harvie-s.jpg", position: "50% 22%", name: "Harvie S", role: "Bass", note: "Legendary jazz bassist and Ben\u2019s teacher" },
     { photo: "", name: "Johnny O\u2019Neal", role: "Piano & vocals",            note: "Smoke Sessions album <em>In the Moment</em>" },
     { photo: "", name: "Roy Hargrove",       role: "Trumpet",                    note: "Featured on <em>In the Moment</em>" },
     { photo: "", name: "Sheila Jordan",      role: "Vocals \u00b7 NEA Jazz Master", note: "RBH Jazz Camp, three years" },
@@ -813,8 +824,10 @@ const SITE = {
 
   // Quotes: use only real quotes you have permission to share. Until then the placeholders say what to add.
   quotes: [
-    { text: "Add a one- or two-sentence quote from a bandleader you play with.", who: "Name, bandleader" },
-    { text: "Add a quote from a venue owner or series presenter who has booked you.", who: "Name, venue or series" }
+    { text: "A former student who\u2019s now grown into a full adult killin cat.", who: "Don Braden",     date: "March 22, 2025" },
+    { text: "You always sound good.",                                         who: "Joe Magnarelli", date: "March 1, 2025" },
+    { text: "Ben is on my list of bassists who I like playing with.",         who: "Dave Braham",    date: "August 8, 2026" },
+    { text: "Your playing is very joyful!",                                   who: "Mark Pearson",   date: "February 14, 2024" }
   ],
 
   // MARQUEE: the scrolling "stages" sign under the opening section.
@@ -826,12 +839,12 @@ const SITE = {
   marquee: ["The Kennedy Center","The Apollo Theater","The Metropolitan Museum of Art","Blue Note Milano","Blue Note Beijing","Nice Jazz Festival","Detroit Jazz Festival","Rochester International Jazz Festival","Brussels Jazz Festival","Gaume Jazz Festival","Red Sea Jazz Festival"],
 
   bookingNote: "Send the date, the room and the format you have in mind. I reply within two days.",
-  email: "bookbenrubens@gmail.com",
-  phone: "(973) 518-3670",
+  email: "booking@yourname.com",
+  phone: "(000) 000-0000",
   // SOCIAL: shown under your name at the top and in the footer.
   social: [
     { label: "Instagram",  icon: "instagram",  handle: "@ben_rubens_bass", url: "https://www.instagram.com/ben_rubens_bass/" },
-    { label: "Facebook",   icon: "facebook",   handle: "Ben Rubens",       url: "https://www.facebook.com/benrsbass" },
+    { label: "Facebook",   icon: "facebook",   handle: "Ben Rubens",       url: "https://www.facebook.com/" },
     { label: "YouTube",    icon: "youtube",    handle: "@benrubensbass",   url: "https://www.youtube.com/@benrubensbass" },
     { label: "SoundCloud", icon: "soundcloud", handle: "benrubensbass",    url: "https://soundcloud.com/benrubensbass" }
   ]
@@ -870,7 +883,7 @@ SITE.facts.forEach(f => $("#facts").append(el("div", {}, [el("b", { text: f.n })
   const counter = el("div", { class: "counter", "aria-hidden": "true" }); stage.append(counter);
   const slides = people.map((p, i) => {
     const pic = el("div", { class: "slide-pic" }, p.photo
-      ? el("img", { src: p.photo, alt: p.name, loading: i ? "lazy" : "eager" })
+      ? el("img", { src: p.photo, alt: "Ben Rubens with " + p.name, loading: i ? "lazy" : "eager", style: "object-position:" + (p.position || "50% 30%") })
       : el("div", { class: "mono" }, el("b", { text: initials(p.name) })));
     const fig = el("figure", { class: "slide", "aria-hidden": "true" }, [pic, p.photo ? null : el("small", { class: "addtag", text: "Add photo" }), el("figcaption", {}, [
       el("span", { class: "role", text: p.role }), el("h4", { text: p.name }), el("p", { html: p.note })
@@ -1030,8 +1043,8 @@ SITE.tracks.forEach(t => $("#tracks").append(el("li", {}, [
 
 /* quotes */
 SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
-  document.createTextNode("“" + q.text + "”"),
-  el("footer", { class: "label", text: "— " + q.who })
+  el("p", { text: q.text }),
+  el("footer", {}, [el("b", { text: q.who }), q.date ? el("span", { text: q.date }) : null])
 ])));
 
 /* contact */
