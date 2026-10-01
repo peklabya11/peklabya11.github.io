@@ -473,6 +473,7 @@
     font-size:clamp(2.2rem,5.4vw,4.2rem);text-shadow:0 0 22px rgba(255,79,143,.45)}
   .slide figcaption p{margin:0;color:#E6D2C0;font-size:1rem}
   .slide figcaption p em{color:var(--brass)}
+  .slide figcaption h4.long{font-size:clamp(1.9rem,4.2vw,3.2rem)}
   .slide.on figcaption > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
   .slide.on figcaption h4{animation-delay:.15s}
   .slide.on figcaption p{animation-delay:.28s}
@@ -872,11 +873,10 @@ const SITE = {
   playedWith: [
     { photo: "images/with-harvie-s.jpg", position: "50% 22%", name: "Harvie S", role: "Bass", note: "Legendary jazz bassist and Ben\u2019s teacher" },
     { photo: "images/with-johnny-oneal-blue-note-milano.jpg", position: "50% 40%", name: "Johnny O\u2019Neal", role: "Piano & vocals", note: "Blue Note Milano \u00b7 Smoke Sessions album <em>In the Moment</em>" },
-    { photo: "", name: "Roy Hargrove",       role: "Trumpet",                    note: "Featured on <em>In the Moment</em>" },
-    { photo: "", name: "Sheila Jordan",      role: "Vocals \u00b7 NEA Jazz Master", note: "RBH Jazz Camp, three years" },
-    { photo: "", name: "James Austin Jr.",   role: "Piano",                      note: "Album <em>Songs in the Key of Wonder</em>" },
-    { photo: "", name: "Jerry Dodgion",      role: "Alto saxophone",             note: "Recorded his original compositions" },
-    { photo: "", name: "Hod O\u2019Brien",   role: "Piano",                      note: "80th birthday week, 2016" },
+    { photo: "images/with-don-braden.jpg", position: "50% 40%", name: "Don Braden", role: "Tenor saxophone & flute", note: "New Brunswick Jazz Project, New Brunswick, NJ" },
+    { photo: "images/with-joe-magnarelli.jpg", position: "60% 45%", name: "Joe Magnarelli", role: "Trumpet", note: "Album <em>Songs in the Key of Wonder</em> with James Austin, Jr." },
+    { photo: "images/with-james-austin-jr.jpg", position: "50% 40%", name: "James Austin Jr.", role: "Piano", note: "Album <em>Songs in the Key of Wonder</em>" },
+    { photo: "images/with-jerry-dodgion.jpg", position: "12% 30%", name: "Jerry Dodgion", role: "Alto saxophone", note: "Recorded his original compositions in the studio with Ben" },
     { photo: "images/rbh-faculty-concert-roni-ben-hur.jpg", position: "50% 35%", name: "Roni Ben-Hur", role: "Guitar", note: "RBH Jazz Camp faculty concert, with Willie Martinez and Helio Alves" }
   ],
 
@@ -1076,7 +1076,7 @@ SITE.facts.forEach(f => $("#facts").append(el("div", {}, [el("b", { text: f.n })
       ? el("img", { src: p.photo, alt: "Ben Rubens with " + p.name, loading: i ? "lazy" : "eager", style: "object-position:" + (p.position || "50% 30%") })
       : el("div", { class: "mono" }, el("b", { text: initials(p.name) })));
     const fig = el("figure", { class: "slide", "aria-hidden": "true" }, [pic, p.photo ? null : el("small", { class: "addtag", text: "Add photo" }), el("figcaption", {}, [
-      el("span", { class: "role", text: p.role }), el("h4", { text: p.name }), el("p", { html: p.note })
+      el("span", { class: "role", text: p.role }), el("h4", { text: p.name, class: p.name.length > 14 ? "long" : "" }), el("p", { html: p.note })
     ])]);
     stage.append(fig);
     const btn = el("button", { type: "button", "aria-label": p.name + ", " + p.role }, [
