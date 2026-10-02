@@ -684,10 +684,9 @@
     <div class="mark"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-f="name"></span></div>
     <nav aria-label="Sections">
       <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
       <a href="#hire">Hire</a>
       <a href="#dates">Dates</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#listen">Listen</a>
       <a href="#press">Press</a>
       <a href="#booking">Booking</a>
     </nav>
@@ -708,7 +707,7 @@
       <p class="pitch" data-f="pitch"></p>
       <div class="cta">
         <a class="btn primary" href="#booking">Book a date</a>
-        <a class="btn" href="#listen">Listen</a>
+        <a class="btn" href="#gallery">Watch &amp; listen</a>
       </div>
     </div>
   </div>
@@ -756,6 +755,19 @@
     </div>
   </section>
 
+  <section id="gallery">
+    <div class="sec-head">
+      <h2>Gallery</h2>
+      <p>Photos and video from gigs, sessions and rehearsals. Select a photo to see it larger.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter gallery">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
+      <button type="button" data-filter="video" aria-pressed="false">Videos</button>
+    </div>
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
   <section id="hire">
     <div class="sec-head">
       <h2>Ways to hire</h2>
@@ -770,24 +782,6 @@
       <p>Public dates. Private events are not listed.</p>
     </div>
     <ul class="dates" id="dateList"></ul>
-  </section>
-
-  <section id="gallery">
-    <div class="sec-head">
-      <h2>Gallery</h2>
-      <p>Photos and video from gigs, sessions and rehearsals. Select a photo to see it larger.</p>
-    </div>
-    <div class="filters" role="group" aria-label="Filter gallery">
-      <button type="button" data-filter="all" aria-pressed="true">All</button>
-      <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
-      <button type="button" data-filter="video" aria-pressed="false">Videos</button>
-    </div>
-    <div class="gallery" id="galleryGrid"></div>
-  </section>
-
-  <section id="listen">
-    <div class="listen-head" style="margin-bottom:20px"><div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin:0"><h2>Listen</h2></div><div class="vinyl" aria-hidden="true"></div></div>
-    <ul class="tracks" id="tracks"></ul>
   </section>
 
   <section id="words">
@@ -893,18 +887,19 @@ const SITE = {
   //               or url = a YouTube / Vimeo / Instagram link that opens in a new tab.
   gallery: [
     { type: "video", yt: "yANtbYQLl5w", url: "https://www.youtube.com/watch?v=yANtbYQLl5w", source: "YouTube", size: "wide", caption: "The James Austin, Jr. Quintet, presented by the Institute of Jazz Studies \u00b7 March 17, 2023" },
+    { type: "video", yt: "ysRE9R3Oxko", url: "https://www.youtube.com/watch?v=ysRE9R3Oxko", source: "YouTube", size: "wide", caption: "\u201cExploring Jazz Standards\u201d with guitarist Ryan Hernandez" },
     { type: "video", yt: "Mo8gA4z1TZE", url: "https://www.youtube.com/watch?v=Mo8gA4z1TZE&t=743s", source: "YouTube", size: "wide", caption: "The Johnny O\u2019Neal Trio at Talks at Google, playing music from <em>In the Moment</em>" },
     { type: "video", yt: "-TdVF5PJSNo", url: "https://www.youtube.com/watch?v=-TdVF5PJSNo", source: "YouTube", size: "wide", caption: "The Johnny O\u2019Neal Trio at the Nice Jazz Festival \u00b7 2017" },
     { type: "video", yt: "cqlFsSEa0Cs", url: "https://www.youtube.com/watch?v=cqlFsSEa0Cs", source: "YouTube", size: "wide", caption: "Jerry Dodgion performs <em>Holunderkuchen</em> by Jerry Dodgion, with Ben Rosenblum, Ben Rubens and Ben Zweig" },
     { type: "video", yt: "5UAl0vFdtbs", url: "https://www.youtube.com/watch?v=5UAl0vFdtbs", source: "YouTube", size: "wide", caption: "Duo with vocalist Anna Kolchina: <em>All or Nothing at All</em>, music by Arthur Altman, lyrics by Jack Lawrence" },
     { type: "photo", src: "images/gallery-rochester-veronica-swift-1.jpg", size: "wide", position: "50% 72%", caption: "With Veronica Swift and Felix Lemerle at the Rochester International Jazz Festival \u00b7 Jazzfoto by John Herr" },
     { type: "photo", src: "images/gallery-bass-bw-club.jpg",              size: "wide", caption: "On the bandstand" },
-    { type: "photo", src: "images/gallery-with-sheila-jordan.jpg",        size: "tall", caption: "Offstage with NEA Jazz Master Sheila Jordan" },
+    { type: "photo", src: "images/gallery-with-sheila-jordan.jpg",        size: "", position: "50% 30%", caption: "Offstage with NEA Jazz Master Sheila Jordan" },
     { type: "photo", src: "images/gallery-piano-trio-gregory-burrus.jpg", size: "",     caption: "Piano trio in concert \u00b7 Photo: Gregory Burrus" },
     { type: "photo", src: "images/gallery-johnny-oneal-bow-1.jpg",        size: "wide", caption: "Taking a bow with the Johnny O\u2019Neal Trio" },
     { type: "photo", src: "images/gallery-gypsy-jazz-session.jpg",        size: "",     caption: "Gypsy-jazz night with two guitars" },
     { type: "photo", src: "images/gallery-njpac-jazz-jam.jpg",            size: "",     caption: "Jazz Jam Sessions at NJPAC, Newark" },
-    { type: "photo", src: "images/gallery-rochester-veronica-swift-2.jpg", size: "wide", position: "50% 35%", caption: "With Veronica Swift and Felix Lemerle \u00b7 Jazzfoto by John Herr" },
+    { type: "photo", src: "images/gallery-rochester-veronica-swift-2.jpg", size: "", position: "55% 35%", caption: "With Veronica Swift and Felix Lemerle \u00b7 Jazzfoto by John Herr" },
     { type: "photo", src: "images/gallery-johnny-oneal-bow-2.jpg",        size: "",     caption: "Curtain call with Johnny O\u2019Neal \u00b7 Photo \u00a9 Angela Bartolo" }
   ],
 
@@ -929,14 +924,7 @@ const SITE = {
     { date: "2026-12-05", time: "8:00 PM",       title: "Guest with a quartet", where: "Jazz club · Morris County, NJ",          tag: "Sideman",  sample: true }
   ],
 
-  // Listen: links to your YouTube and SoundCloud profiles. Each item opens in a new tab.
-  // FEATURED VIDEO: the preview thumbnail above the links. "id" is the 11 characters after
-  // watch?v= in a YouTube address. Change it to feature a different video.
-  featuredVideo: { id: "ysRE9R3Oxko", title: "Exploring Jazz Standards", with: "Ben Rubens and Ryan Hernandez" },
-  tracks: [
-    { title: "Watch on YouTube",   note: "Live performances and videos", src: "YouTube",    url: "https://www.youtube.com/@benrubensbass" },
-    { title: "Listen on SoundCloud", note: "Recordings and tracks",       src: "SoundCloud", url: "https://soundcloud.com/benrubensbass" }
-  ],
+
 
 
   // Quotes: use only real quotes you have permission to share. Until then the placeholders say what to add.
@@ -1216,34 +1204,6 @@ SITE.dates.forEach(d => {
     el("span", { class: "chip" + (d.sample ? " sample" : ""), text: d.sample ? "Example" : d.tag })
   ]));
 });
-
-/* featured YouTube preview */
-if (SITE.featuredVideo && SITE.featuredVideo.id){
-  const v = SITE.featuredVideo, watch = "https://www.youtube.com/watch?v=" + v.id;
-  const img = el("img", { src: "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg", alt: "", loading: "lazy" });
-  const fallback = el("div", { class: "yt-fallback", "aria-hidden": "true" }, [el("span", { text: "YouTube" }), el("b", { text: "@benrubensbass" })]);
-  img.addEventListener("error", () => { img.remove(); });
-  const card = el("a", { class: "yt-card", href: watch, target: "_blank", rel: "noopener", "aria-label": "Watch " + v.title + " on YouTube" }, [
-    el("div", { class: "yt-thumb" }, [fallback, img, el("span", { class: "yt-play", html: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="30"/><path d="M26 20 46 32 26 44z" fill="#1A0F14"/></svg>' })]),
-    el("div", { class: "yt-meta" }, [
-      el("span", { class: "label", text: "Featured video" }),
-      el("b", { html: "\u201C" + v.title + "\u201D" }),
-      el("span", { text: v.with })
-    ])
-  ]);
-  $("#tracks").before(card);
-}
-
-/* tracks */
-const playIcon = '<svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z"/></svg>';
-SITE.tracks.forEach(t => $("#tracks").append(el("li", {}, [
-  el("a", { href: t.url, target: "_blank", rel: "noopener" }, [
-    el("span", { class: "play", html: playIcon }),
-    el("span", {}, [document.createTextNode(t.title), el("small", { text: t.note })]),
-    el("span", { class: "src", text: t.src })
-  ])
-])));
-
 
 /* quotes */
 SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
