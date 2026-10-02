@@ -893,6 +893,10 @@ const SITE = {
   //               or url = a YouTube / Vimeo / Instagram link that opens in a new tab.
   gallery: [
     { type: "video", yt: "yANtbYQLl5w", url: "https://www.youtube.com/watch?v=yANtbYQLl5w", source: "YouTube", size: "wide", caption: "The James Austin, Jr. Quintet, presented by the Institute of Jazz Studies \u00b7 March 17, 2023" },
+    { type: "video", yt: "Mo8gA4z1TZE", url: "https://www.youtube.com/watch?v=Mo8gA4z1TZE&t=743s", source: "YouTube", size: "wide", caption: "The Johnny O\u2019Neal Trio at Talks at Google, playing music from <em>In the Moment</em>" },
+    { type: "video", yt: "-TdVF5PJSNo", url: "https://www.youtube.com/watch?v=-TdVF5PJSNo", source: "YouTube", size: "wide", caption: "The Johnny O\u2019Neal Trio at the Nice Jazz Festival \u00b7 2017" },
+    { type: "video", yt: "cqlFsSEa0Cs", url: "https://www.youtube.com/watch?v=cqlFsSEa0Cs", source: "YouTube", size: "wide", caption: "Jerry Dodgion performs <em>Holunderkuchen</em> by Jerry Dodgion, with Ben Rosenblum, Ben Rubens and Ben Zweig" },
+    { type: "video", yt: "5UAl0vFdtbs", url: "https://www.youtube.com/watch?v=5UAl0vFdtbs", source: "YouTube", size: "wide", caption: "Duo with vocalist Anna Kolchina: <em>All or Nothing at All</em>, music by Arthur Altman, lyrics by Jack Lawrence" },
     { type: "photo", src: "images/gallery-rochester-veronica-swift-1.jpg", size: "wide", position: "50% 72%", caption: "With Veronica Swift and Felix Lemerle at the Rochester International Jazz Festival \u00b7 Jazzfoto by John Herr" },
     { type: "photo", src: "images/gallery-bass-bw-club.jpg",              size: "wide", caption: "On the bandstand" },
     { type: "photo", src: "images/gallery-with-sheila-jordan.jpg",        size: "tall", caption: "Offstage with NEA Jazz Master Sheila Jordan" },
@@ -1141,16 +1145,16 @@ SITE.gallery.forEach(g => {
     fig.classList.add("has-video");
     const v = el("video", { src: g.src, controls: "", preload: "metadata", playsinline: "" });
     if (g.poster) v.setAttribute("poster", g.poster);
-    fig.append(v, el("figcaption", {}, [el("small", { text: "Video" }), document.createTextNode(g.caption)]));
+    fig.append(v, el("figcaption", {}, [el("small", { text: "Video" }), el("span", { html: g.caption })]));
   } else {
     fig.classList.add("has-video");
     fig.append(
-      el("a", { class: "vlink" + (g.yt ? " has-thumb" : ""), href: g.url, target: "_blank", rel: "noopener", "aria-label": "Watch on " + (g.source || "video site") + ": " + g.caption }, [
+      el("a", { class: "vlink" + (g.yt ? " has-thumb" : ""), href: g.url, target: "_blank", rel: "noopener", "aria-label": "Watch on " + (g.source || "video site") + ": " + g.caption.replace(/<[^>]+>/g, "") }, [
         g.yt ? (() => { const im = el("img", { class: "vthumb", src: "https://i.ytimg.com/vi/" + g.yt + "/hqdefault.jpg", alt: "", loading: "lazy" }); im.addEventListener("error", () => im.remove()); return im; })() : null,
         el("span", { class: "play", html: playSvg }),
         el("span", { class: "src", text: "Watch on " + (g.source || "video site") })
       ]),
-      el("figcaption", {}, [el("small", { text: "Video" }), document.createTextNode(g.caption)])
+      el("figcaption", {}, [el("small", { text: "Video" }), el("span", { html: g.caption })])
     );
   }
   grid.append(fig);
