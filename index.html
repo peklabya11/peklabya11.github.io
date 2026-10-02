@@ -669,6 +669,13 @@
     .bk-count{min-width:120px}
   }
   @media (prefers-reduced-motion: reduce){ .leaf,.sheet,.book{transition:none!important} }
+
+  .vlink.has-thumb{position:relative;overflow:hidden}
+  .vlink .vthumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .vlink.has-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(12,6,9,.15), rgba(12,6,9,.55))}
+  .vlink.has-thumb .play,.vlink.has-thumb .src{position:relative;z-index:1}
+  .vlink.has-thumb .src{color:#F7EBDC;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+  .vlink.has-thumb:hover .vthumb{transform:scale(1.04)}
 </style>
 </head>
 <body>
@@ -885,14 +892,16 @@ const SITE = {
   // type "video": either src = a video file URL (.mp4) plus optional poster image,
   //               or url = a YouTube / Vimeo / Instagram link that opens in a new tab.
   gallery: [
-    { type: "photo", src: "", caption: "Trio night, add venue and date",        size: "wide" },
-    { type: "video", url: "https://www.youtube.com/", source: "YouTube", caption: "Live clip: add tune, band and venue" },
-    { type: "photo", src: "", caption: "Soundcheck, add venue",                 size: "tall" },
-    { type: "photo", src: "", caption: "With the quartet, add festival and year", size: "" },
-    { type: "video", url: "https://vimeo.com/",   source: "Vimeo",   caption: "Bass feature: add tune and date" },
-    { type: "photo", src: "", caption: "Library concert, add town and date",    size: "" },
-    { type: "photo", src: "", caption: "Studio session, add project name",      size: "wide" },
-    { type: "photo", src: "", caption: "Backstage with the band, add event",    size: "wide" }
+    { type: "video", yt: "yANtbYQLl5w", url: "https://www.youtube.com/watch?v=yANtbYQLl5w", source: "YouTube", size: "wide", caption: "The James Austin, Jr. Quintet, presented by the Institute of Jazz Studies \u00b7 March 17, 2023" },
+    { type: "photo", src: "images/gallery-rochester-veronica-swift-1.jpg", size: "wide", position: "50% 72%", caption: "With Veronica Swift and Felix Lemerle at the Rochester International Jazz Festival \u00b7 Jazzfoto by John Herr" },
+    { type: "photo", src: "images/gallery-bass-bw-club.jpg",              size: "wide", caption: "On the bandstand" },
+    { type: "photo", src: "images/gallery-with-sheila-jordan.jpg",        size: "tall", caption: "Offstage with NEA Jazz Master Sheila Jordan" },
+    { type: "photo", src: "images/gallery-piano-trio-gregory-burrus.jpg", size: "",     caption: "Piano trio in concert \u00b7 Photo: Gregory Burrus" },
+    { type: "photo", src: "images/gallery-johnny-oneal-bow-1.jpg",        size: "wide", caption: "Taking a bow with the Johnny O\u2019Neal Trio" },
+    { type: "photo", src: "images/gallery-gypsy-jazz-session.jpg",        size: "",     caption: "Gypsy-jazz night with two guitars" },
+    { type: "photo", src: "images/gallery-njpac-jazz-jam.jpg",            size: "",     caption: "Jazz Jam Sessions at NJPAC, Newark" },
+    { type: "photo", src: "images/gallery-rochester-veronica-swift-2.jpg", size: "wide", position: "50% 35%", caption: "With Veronica Swift and Felix Lemerle \u00b7 Jazzfoto by John Herr" },
+    { type: "photo", src: "images/gallery-johnny-oneal-bow-2.jpg",        size: "",     caption: "Curtain call with Johnny O\u2019Neal \u00b7 Photo \u00a9 Angela Bartolo" }
   ],
 
   facts: [
@@ -1124,7 +1133,7 @@ SITE.gallery.forEach(g => {
   const fig = el("figure", { class: "gitem " + (g.size || ""), "data-type": g.type });
   if (g.type === "photo") {
     const i = photos.indexOf(g);
-    const inner = g.src ? el("img", { src: g.src, alt: g.caption, loading: "lazy" }) : el("div", { class: "ph", text: "Add photo" });
+    const inner = g.src ? el("img", { src: g.src, alt: g.caption, loading: "lazy", style: g.position ? "object-position:" + g.position : "" }) : el("div", { class: "ph", text: "Add photo" });
     const btn = el("button", { class: "open", type: "button", "aria-label": "Open photo: " + g.caption }, inner);
     btn.addEventListener("click", () => openLightbox(i));
     fig.append(btn, el("figcaption", { text: g.caption }));
@@ -1136,7 +1145,8 @@ SITE.gallery.forEach(g => {
   } else {
     fig.classList.add("has-video");
     fig.append(
-      el("a", { class: "vlink", href: g.url, target: "_blank", rel: "noopener", "aria-label": "Watch on " + (g.source || "video site") + ": " + g.caption }, [
+      el("a", { class: "vlink" + (g.yt ? " has-thumb" : ""), href: g.url, target: "_blank", rel: "noopener", "aria-label": "Watch on " + (g.source || "video site") + ": " + g.caption }, [
+        g.yt ? (() => { const im = el("img", { class: "vthumb", src: "https://i.ytimg.com/vi/" + g.yt + "/hqdefault.jpg", alt: "", loading: "lazy" }); im.addEventListener("error", () => im.remove()); return im; })() : null,
         el("span", { class: "play", html: playSvg }),
         el("span", { class: "src", text: "Watch on " + (g.source || "video site") })
       ]),
