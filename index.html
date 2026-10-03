@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ben Rubens · Jazz Bassist</title>
-<meta name="description" content="Ben Rubens, NJ/NYC jazz bassist. Featured on the Johnny O’Neal Trio album In the Moment with Roy Hargrove; performances at the Kennedy Center, the Apollo Theatre and Blue Note Milano.">
+<title>Ben Rubens · Jazz Bass</title>
+<meta name="description" content="Ben Rubens, NJ/NYC jazz bassist. Featured on the Johnny O’Neal Trio album In the Moment with Roy Hargrove; performances at the Kennedy Center, the Apollo and Blue Note Milano.">
 <meta name="theme-color" content="#170E13">
 <meta property="og:title" content="Ben Rubens · Jazz Bass">
 <meta property="og:image" content="ben-rubens.jpg">
@@ -137,28 +137,6 @@
   .format h3{font-size:1.9rem;font-weight:700;text-transform:uppercase}
   .format p{margin:0;color:var(--ink-soft);font-size:1rem}
   .format .meta{margin-top:auto;font-family:var(--mono);font-size:.78rem;color:var(--brass);letter-spacing:.04em}
-
-  /* dates */
-  .dates{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-  .date{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px;align-items:center;padding-block:18px;border-bottom:1px solid var(--rule)}
-  .date .when{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1;text-transform:uppercase;font-variant-numeric:tabular-nums}
-  .date .when small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--ink-soft);letter-spacing:.08em;margin-top:6px}
-  .date .what b{display:block;font-weight:600}
-  .date .what span{color:var(--ink-soft);font-size:.95rem}
-  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-soft);white-space:nowrap}
-  .chip.sample{border-color:var(--oxblood);color:var(--oxblood)}
-
-  /* listen + repertoire */
-  .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px)}
-  .tracks{list-style:none;margin:0;padding:0}
-  .tracks li{border-bottom:1px solid var(--rule)}
-  .tracks a{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding-block:14px;text-decoration:none}
-  .tracks .play{width:44px;height:44px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center}
-  .tracks a:hover .play{background:var(--brass);border-color:var(--brass)}
-  .tracks a:hover .play svg{fill:var(--on-accent)}
-  .tracks .play svg{width:14px;height:14px;fill:var(--ink);margin-left:3px}
-  .tracks small{display:block;color:var(--ink-soft);font-size:.9rem}
-  .tracks .src{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
 
   /* quotes */
   .quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,28px)}
@@ -676,6 +654,9 @@
   .vlink.has-thumb .play,.vlink.has-thumb .src{position:relative;z-index:1}
   .vlink.has-thumb .src{color:#F7EBDC;text-shadow:0 1px 6px rgba(0,0,0,.8)}
   .vlink.has-thumb:hover .vthumb{transform:scale(1.04)}
+  .quotes blockquote.featured{grid-column:1 / -1;text-align:center;align-items:center;background:linear-gradient(160deg, rgba(255,181,71,.12), transparent 50%), linear-gradient(340deg, rgba(255,79,143,.14), transparent 55%), var(--panel)}
+  .quotes blockquote.featured p{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+  .quotes blockquote.featured footer{justify-content:center}
 </style>
 </head>
 <body>
@@ -686,7 +667,6 @@
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
       <a href="#hire">Hire</a>
-      <a href="#dates">Dates</a>
       <a href="#press">Press</a>
       <a href="#booking">Booking</a>
     </nav>
@@ -776,14 +756,6 @@
     <div class="formats" id="formats"></div>
   </section>
 
-  <section id="dates">
-    <div class="sec-head">
-      <h2>Upcoming</h2>
-      <p>Public dates. Private events are not listed.</p>
-    </div>
-    <ul class="dates" id="dateList"></ul>
-  </section>
-
   <section id="words">
     <div class="sec-head">
       <h2>Said about the playing</h2>
@@ -853,7 +825,7 @@ const SITE = {
   name: "Ben Rubens",
   instrument: "Upright bass",
   region: "New Jersey / New York City",
-  pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo Theatre to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
+  pitch: "Bassist on the Johnny O\u2019Neal Trio\u2019s Smoke Sessions album <em>In the Moment</em>, featuring Roy Hargrove. From the Kennedy Center and the Apollo Theater to Blue Note Milano, a swinging, supportive low end for your band, stage or series.",
 
   // Photo: put a URL or a data: URI here. Leave empty to show the placeholder box.
   photo: "ben-rubens.jpg",
@@ -897,7 +869,7 @@ const SITE = {
     { type: "photo", src: "images/gallery-with-sheila-jordan.jpg",        size: "", position: "50% 30%", caption: "Offstage with NEA Jazz Master Sheila Jordan" },
     { type: "photo", src: "images/gallery-piano-trio-gregory-burrus.jpg", size: "",     caption: "Piano trio in concert \u00b7 Photo: Gregory Burrus" },
     { type: "photo", src: "images/gallery-johnny-oneal-bow-1.jpg",        size: "wide", caption: "Taking a bow with the Johnny O\u2019Neal Trio" },
-    { type: "photo", src: "images/gallery-gypsy-jazz-session.jpg",        size: "",     caption: "Gypsy-jazz night with two guitars" },
+    { type: "photo", src: "images/gallery-gypsy-jazz-session.jpg",        size: "",     caption: "Gypsy-jazz night with Uptown Guitars" },
     { type: "photo", src: "images/gallery-njpac-jazz-jam.jpg",            size: "",     caption: "Jazz Jam Sessions at NJPAC, Newark" },
     { type: "photo", src: "images/gallery-rochester-veronica-swift-2.jpg", size: "", position: "55% 35%", caption: "With Veronica Swift and Felix Lemerle \u00b7 Jazzfoto by John Herr" },
     { type: "photo", src: "images/gallery-johnny-oneal-bow-2.jpg",        size: "",     caption: "Curtain call with Johnny O\u2019Neal \u00b7 Photo \u00a9 Angela Bartolo" }
@@ -929,6 +901,7 @@ const SITE = {
 
   // Quotes: use only real quotes you have permission to share. Until then the placeholders say what to add.
   quotes: [
+    { text: "Dear Ben, I love you and your playing.",                         who: "Sheila Jordan",  date: "August 9, 2023", featured: true },
     { text: "A former student who\u2019s now grown into a full adult killin cat.", who: "Don Braden",     date: "March 22, 2025" },
     { text: "You always sound good.",                                         who: "Joe Magnarelli", date: "March 1, 2025" },
     { text: "Ben is on my list of bassists who I like playing with.",         who: "Dave Braham",    date: "August 8, 2026" },
@@ -1193,20 +1166,8 @@ SITE.formats.forEach(f => $("#formats").append(
   el("article", { class: "format" }, [el("h3", { text: f.title }), el("p", { text: f.text }), el("span", { class: "meta", text: f.meta })])
 ));
 
-/* dates */
-const fmtDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-const fmtWk  = new Intl.DateTimeFormat("en-US", { weekday: "long", timeZone: "UTC" });
-SITE.dates.forEach(d => {
-  const dt = new Date(d.date + "T00:00:00Z");
-  $("#dateList").append(el("li", { class: "date" }, [
-    el("div", { class: "when" }, [document.createTextNode(fmtDay.format(dt)), el("small", { text: fmtWk.format(dt) + " · " + d.time })]),
-    el("div", { class: "what" }, [el("b", { text: d.title }), el("span", { text: d.where })]),
-    el("span", { class: "chip" + (d.sample ? " sample" : ""), text: d.sample ? "Example" : d.tag })
-  ]));
-});
-
 /* quotes */
-SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", {}, [
+SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", { class: q.featured ? "featured" : "" }, [
   el("p", { text: q.text }),
   el("footer", {}, [el("b", { text: q.who }), q.date ? el("span", { text: q.date }) : null])
 ])));
