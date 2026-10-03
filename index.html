@@ -145,7 +145,7 @@
   blockquote footer{margin-top:12px;font-style:normal}
 
   /* booking */
-  .booking{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,5vw,64px)}
+  .booking{display:grid;grid-template-columns:minmax(0,1fr);max-width:640px}
   .contact-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:12px;border-bottom:1px solid var(--rule)}
   .contact-line .v{font-family:var(--mono);font-size:1rem;user-select:all;word-break:break-all}
   .copy{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-soft);padding:4px 10px;cursor:pointer;border-radius:2px}
@@ -786,26 +786,8 @@
         <div class="sec-head" style="grid-template-columns:minmax(0,1fr);margin-bottom:20px"><h2>Booking</h2></div>
         <p style="max-width:44ch;margin-top:0" data-f="bookingNote"></p>
         <div class="contact-line"><span class="label" style="width:64px">Email</span><span class="v" id="email"></span><button class="copy" type="button" data-copy="email">Copy</button></div>
-        <div class="contact-line"><span class="label" style="width:64px">Phone</span><span class="v" id="phone"></span><button class="copy" type="button" data-copy="phone">Copy</button></div>
         <p class="status" id="contactStatus" role="status"></p>
       </div>
-      <form id="inquiry" novalidate>
-        <p class="label" style="margin:0">Write your inquiry here, then copy it into an email</p>
-        <div class="row">
-          <label for="q-name">Your name<input id="q-name" type="text" autocomplete="name" value="Pat Rivera"></label>
-          <label for="q-org">Venue or organization<input id="q-org" type="text" value="Riverside Public Library"></label>
-        </div>
-        <div class="row">
-          <label for="q-date">Date<input id="q-date" type="date" value="2027-02-14"></label>
-          <label for="q-format">Format<select id="q-format"></select></label>
-        </div>
-        <label for="q-notes">Details<textarea id="q-notes">Sunday afternoon concert, 60 minutes, about 80 seats. We have a piano.</textarea></label>
-        <pre class="out" id="q-out" aria-live="polite"></pre>
-        <div class="cta">
-          <button class="btn primary" type="submit">Copy inquiry</button>
-        </div>
-        <p class="status" id="q-status" role="status"></p>
-      </form>
     </div>
   </section>
 
@@ -1003,12 +985,12 @@ const SITE = {
   ],
 
   bookingNote: "Send the date, the room and the format you have in mind. I reply within two days.",
-  email: "benrsbass@gmail.com",
-  phone: "(973) 518-3670",
+  email: "booking@yourname.com",
+  phone: "(000) 000-0000",
   // SOCIAL: shown under your name at the top and in the footer.
   social: [
     { label: "Instagram",  icon: "instagram",  handle: "@ben_rubens_bass", url: "https://www.instagram.com/ben_rubens_bass/" },
-    { label: "Facebook",   icon: "facebook",   handle: "Ben Rubens",       url: "https://www.facebook.com/benrsbass/" },
+    { label: "Facebook",   icon: "facebook",   handle: "Ben Rubens",       url: "https://www.facebook.com/" },
     { label: "YouTube",    icon: "youtube",    handle: "@benrubensbass",   url: "https://www.youtube.com/@benrubensbass" },
     { label: "SoundCloud", icon: "soundcloud", handle: "benrubensbass",    url: "https://soundcloud.com/benrubensbass" }
   ]
@@ -1332,7 +1314,6 @@ SITE.quotes.forEach(q => $("#quotes").append(el("blockquote", { class: q.feature
 
 /* contact */
 $("#email").textContent = SITE.email;
-$("#phone").textContent = SITE.phone;
 
 /* social links under the name: simple generic icons, not company logos */
 const SOCIAL_ICONS = {
@@ -1362,23 +1343,6 @@ document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click"
   const src = $("#" + b.dataset.copy);
   copyText(src.textContent, $("#contactStatus"), src);
 }));
-
-/* inquiry builder */
-const fSel = $("#q-format");
-SITE.formats.forEach(f => fSel.append(el("option", { value: f.title, text: f.title })));
-fSel.value = "Library concert";
-const fmtLong = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
-function buildInquiry(){
-  const v = id => $("#" + id).value.trim();
-  const d = v("q-date") ? fmtLong.format(new Date(v("q-date") + "T00:00:00Z")) : "(date to be set)";
-  return `To: ${SITE.email}\nSubject: Booking inquiry – ${v("q-format")} – ${d}\n\nHi ${SITE.name.split(" ")[0]},\n\nI'm ${v("q-name") || "(your name)"} from ${v("q-org") || "(venue)"}. We'd like to book a ${v("q-format").toLowerCase()} on ${d}.\n\n${v("q-notes")}\n\nThanks,\n${v("q-name") || ""}`;
-}
-const out = $("#q-out");
-const refresh = () => { out.textContent = buildInquiry(); };
-$("#inquiry").addEventListener("input", refresh);
-$("#inquiry").addEventListener("submit", e => { e.preventDefault(); copyText(out.textContent, $("#q-status"), out); });
-refresh();
-
 
 /* marquee (rendered twice for a seamless loop) */
 const mt = $("#marqueeTrack");
